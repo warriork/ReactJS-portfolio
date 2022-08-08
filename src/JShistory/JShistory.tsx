@@ -167,7 +167,7 @@ const H1_Styled = styled.h1`
     background-size: 22px 22px;
     width: 22px;
     height: 22px;
-    background-image: url('../../public/js.png');
+    background-image: url('./js.png');
   }
 `
 
@@ -179,7 +179,7 @@ const H2_Styled = styled.h2`
     background-size: 22px 22px;
     width: 22px;
     height: 22px;
-    background-image: url('../../public/history.png');
+    background-image: url('./history.png');
   }
 `
 const Paragraph_Styled = styled.p`
