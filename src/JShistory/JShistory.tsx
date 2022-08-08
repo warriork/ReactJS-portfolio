@@ -191,6 +191,9 @@ const Link_Styled = styled.a`
   color: ${styles.color.blue};
   text-decoration: none;
   cursor: pointer;
+  &: hover {
+    ${styles.hoverLink}
+  } ;
 `
 const Th_Styled = styled.th`
   font-weight: bold;

@@ -6,4 +6,6 @@ export const styles = {
     brown: 'rgb(223, 177, 117)',
     wheat: 'rgb(96, 87, 70)',
   },
+  hoverLink: `color: green;
+  text-decoration: underline`,
 }

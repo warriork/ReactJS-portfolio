@@ -15,8 +15,8 @@ export const Layout = () => {
       </Div_Wrapper>
       <Footer_Container>
         <Paragraph_Styled>
-          Made by <A_link href={URLs.warriorkGitLab}>Ihor Fesina</A_link>, a student of a{' '}
-          <A_link href={URLs.ITabsolvent}>IT absolvent</A_link>
+          Made by <Link_Footer href={URLs.warriorkGitLab}>Ihor Fesina</Link_Footer>, a student of a{' '}
+          <Link_Footer href={URLs.ITabsolvent}>IT absolvent</Link_Footer>
         </Paragraph_Styled>
       </Footer_Container>
     </>
@@ -37,6 +37,9 @@ const Link_Styled = styled(Link)`
   cursor: pointer;
   &:hover {
     color: ${styles.color.green};
+    transform: translate(0, -2px);
+    transition: 0.5s;
+    ${styles.hoverLink};
   }
 `
 const Div_Wrapper = styled.div`
@@ -52,14 +55,19 @@ const Footer_Container = styled.footer`
 `
 const Paragraph_Styled = styled.p`
   line-height: 1.2;
-  color: ${styles.color.wheat};
+  color: white;
   text-align: center;
 `
-const A_link = styled.a`
+const Link_Footer = styled.a`
   color: ${styles.color.brown};
   text-decoration: none;
   width: 940px;
-  &:hover {
-    color: ${styles.color.green};
-  }
+  cursor: pointer;
+    &:hover {
+      transform: translate(0, -2px);
+      transition: 0.5s;
+      color: ${styles.color.green};
+      ${styles.hoverLink};
+    }
+  } ;
 `
