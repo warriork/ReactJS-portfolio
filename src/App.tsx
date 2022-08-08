@@ -5,7 +5,7 @@ import { Link, Route, Routes } from 'react-router-dom'
 import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 
-export function App() {
+export const App = () => {
   return (
     <>
       <Global />

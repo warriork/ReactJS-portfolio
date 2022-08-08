@@ -5,22 +5,22 @@ import styled from 'styled-components'
 export const Layout = () => {
   return (
     <>
-      <HeaderContainer>
-        <StyledLink to={JShistoryURL}>JavaScript history</StyledLink>
-      </HeaderContainer>
+      <Div_HeaderContainer>
+        <Link_Styled to={JShistoryURL}>JavaScript history</Link_Styled>
+      </Div_HeaderContainer>
       <Div_Wrapper>
         <Outlet />
       </Div_Wrapper>
-      <FooterContainer>
-        <Paragraph>
-          Made by <Hyperlink href='https://gitlab.com/warriork'>Ihor Fesina</Hyperlink>, a student
-          of a <Hyperlink href='https://www.it-absolvent.cz/'>IT absolvent</Hyperlink>
-        </Paragraph>
-      </FooterContainer>
+      <Footer_Container>
+        <Paragraph_Styled>
+          Made by <A_link href='https://gitlab.com/warriork'>Ihor Fesina</A_link>, a student of a{' '}
+          <A_link href='https://www.it-absolvent.cz/'>IT absolvent</A_link>
+        </Paragraph_Styled>
+      </Footer_Container>
     </>
   )
 }
-const HeaderContainer = styled.header`
+const Div_HeaderContainer = styled.header`
   height: 50px;
   width: 100%;
   background: black;
@@ -29,7 +29,7 @@ const HeaderContainer = styled.header`
   justify-content: space-evenly;
   align-items: center;
 `
-const StyledLink = styled(Link)`
+const Link_Styled = styled(Link)`
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -40,7 +40,7 @@ const StyledLink = styled(Link)`
 const Div_Wrapper = styled.div`
   min-height: calc(100vh - 100px);
 `
-const FooterContainer = styled.footer`
+const Footer_Container = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,13 +48,12 @@ const FooterContainer = styled.footer`
   height: 50px;
   width: 100%;
 `
-const Paragraph = styled.p`
+const Paragraph_Styled = styled.p`
   line-height: 1.2;
   color: wheat;
-
   text-align: center;
 `
-const Hyperlink = styled.a`
+const A_link = styled.a`
   color: rgb(223, 177, 117);
   text-decoration: none;
   width: 940px;
