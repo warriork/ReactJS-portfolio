@@ -1,5 +1,6 @@
-import { URLs } from '../assets/URLs'
-import { styles } from '../assets/theme'
+import { Link_Hover } from '../components/Link_Hover'
+import { styles } from '../theme'
+import { urls } from '../urls'
 import React from 'react'
 import styled from 'styled-components'
 export const JShistory = () => {
@@ -29,7 +30,7 @@ export const JShistory = () => {
               <Td_Styled>1995</Td_Styled>
               <Td_Styled>
                 JavaScript was invented by{' '}
-                <Link_Styled href={URLs.BredanEich}>Brendan Eich</Link_Styled>
+                <Link_Styled href={urls.bredanEich}>Brendan Eich</Link_Styled>
               </Td_Styled>
             </Tr_Styled>
             <Tr_Styled>
@@ -187,13 +188,10 @@ const Paragraph_Styled = styled.p`
   max-width: 940px;
   line-height: 1.5;
 `
-const Link_Styled = styled.a`
+const Link_Styled = styled(Link_Hover)`
   color: ${styles.color.blue};
   text-decoration: none;
   cursor: pointer;
-  &: hover {
-    ${styles.hoverLink}
-  } ;
 `
 const Th_Styled = styled.th`
   font-weight: bold;

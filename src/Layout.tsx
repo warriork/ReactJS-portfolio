@@ -1,7 +1,8 @@
-import { JShistoryURL } from '../routerPath'
+import { JShistoryURL } from './routerPath'
 import { Link, Outlet } from 'react-router-dom'
-import { URLs } from '../assets/URLs'
-import { styles } from '../assets/theme'
+import { Link_Hover } from './components/Link_Hover'
+import { styles } from './theme'
+import { urls } from './urls'
 import React from 'react'
 import styled from 'styled-components'
 export const Layout = () => {
@@ -15,8 +16,8 @@ export const Layout = () => {
       </Div_Wrapper>
       <Footer_Container>
         <Paragraph_Styled>
-          Made by <Link_Footer href={URLs.warriorkGitLab}>Ihor Fesina</Link_Footer>, a student of a{' '}
-          <Link_Footer href={URLs.ITabsolvent}>IT absolvent</Link_Footer>
+          Made by <Link_Footer href={urls.warriorkGitLab}>Ihor Fesina</Link_Footer>, a student of a{' '}
+          <Link_Footer href={urls.itAbsolvent}>IT absolvent</Link_Footer>
         </Paragraph_Styled>
       </Footer_Container>
     </>
@@ -39,7 +40,10 @@ const Link_Styled = styled(Link)`
     color: ${styles.color.green};
     transform: translate(0, -2px);
     transition: 0.5s;
-    ${styles.hoverLink};
+    &:hover {
+      color: green;
+      text-decoration: underline;
+    }
   }
 `
 const Div_Wrapper = styled.div`
@@ -58,7 +62,7 @@ const Paragraph_Styled = styled.p`
   color: white;
   text-align: center;
 `
-const Link_Footer = styled.a`
+const Link_Footer = styled(Link_Hover)`
   color: ${styles.color.brown};
   text-decoration: none;
   width: 940px;
@@ -66,8 +70,6 @@ const Link_Footer = styled.a`
     &:hover {
       transform: translate(0, -2px);
       transition: 0.5s;
-      color: ${styles.color.green};
-      ${styles.hoverLink};
     }
   } ;
 `

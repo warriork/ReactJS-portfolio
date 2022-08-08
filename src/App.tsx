@@ -1,6 +1,6 @@
 import { JShistory } from './JShistory/JShistory'
 import { JShistoryURL } from './routerPath'
-import { Layout } from './layout/Layout'
+import { Layout } from './Layout'
 import { Link, Route, Routes } from 'react-router-dom'
 import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
