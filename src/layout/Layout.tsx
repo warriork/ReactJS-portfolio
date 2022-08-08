@@ -1,5 +1,7 @@
 import { JShistoryURL } from '../routerPath'
 import { Link, Outlet } from 'react-router-dom'
+import { URLs } from '../assets/URLs'
+import { styles } from '../assets/theme'
 import React from 'react'
 import styled from 'styled-components'
 export const Layout = () => {
@@ -13,8 +15,8 @@ export const Layout = () => {
       </Div_Wrapper>
       <Footer_Container>
         <Paragraph_Styled>
-          Made by <A_link href='https://gitlab.com/warriork'>Ihor Fesina</A_link>, a student of a{' '}
-          <A_link href='https://www.it-absolvent.cz/'>IT absolvent</A_link>
+          Made by <A_link href={URLs.warriorkGitLab}>Ihor Fesina</A_link>, a student of a{' '}
+          <A_link href={URLs.ITabsolvent}>IT absolvent</A_link>
         </Paragraph_Styled>
       </Footer_Container>
     </>
@@ -34,7 +36,7 @@ const Link_Styled = styled(Link)`
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    color: green;
+    color: ${styles.color.green};
   }
 `
 const Div_Wrapper = styled.div`
@@ -50,14 +52,14 @@ const Footer_Container = styled.footer`
 `
 const Paragraph_Styled = styled.p`
   line-height: 1.2;
-  color: wheat;
+  color: ${styles.color.wheat};
   text-align: center;
 `
 const A_link = styled.a`
-  color: rgb(223, 177, 117);
+  color: ${styles.color.brown};
   text-decoration: none;
   width: 940px;
   &:hover {
-    color: green;
+    color: ${styles.color.green};
   }
 `

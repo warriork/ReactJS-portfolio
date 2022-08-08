@@ -1,4 +1,4 @@
-import { JShistoryURLs } from '../assets/URLs'
+import { URLs } from '../assets/URLs'
 import { styles } from '../assets/theme'
 import React from 'react'
 import styled from 'styled-components'
@@ -29,12 +29,12 @@ export const JShistory = () => {
               <Td_Styled>1995</Td_Styled>
               <Td_Styled>
                 JavaScript was invented by{' '}
-                <Link_Styled href={JShistoryURLs.BredanEich}>Brendan Eich</Link_Styled>
+                <Link_Styled href={URLs.BredanEich}>Brendan Eich</Link_Styled>
               </Td_Styled>
             </Tr_Styled>
             <Tr_Styled>
               <Td_Styled>1996</Td_Styled>
-              <Td_Styled>_StyledNetscape 2 was released with JavaScript 1.0</Td_Styled>
+              <Td_Styled>Netscape 2 was released with JavaScript 1.0</Td_Styled>
             </Tr_Styled>
             <Tr_Styled>
               <Td_Styled>1997</Td_Styled>
@@ -195,6 +195,7 @@ const Link_Styled = styled.a`
 const Th_Styled = styled.th`
   font-weight: bold;
   padding: 5px 10px;
+  background-color: ${styles.color.grey};
 `
 const Td_Styled = styled.td`
   padding: 5px 10px;
