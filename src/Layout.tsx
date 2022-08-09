@@ -1,6 +1,5 @@
-import { JShistoryURL } from './routerPath'
 import { Link, Outlet } from 'react-router-dom'
-import { Link_Hover } from './components/Link_Hover'
+import { Link_Styled } from './components/Link_Styled'
 import { styles } from './theme'
 import { urls } from './urls'
 import React from 'react'
@@ -9,15 +8,15 @@ export const Layout = () => {
   return (
     <>
       <Div_HeaderContainer>
-        <Link_Styled to={JShistoryURL}>JavaScript history</Link_Styled>
+        <Link_Router to={urls.jsHistory}>JavaScript history</Link_Router>
       </Div_HeaderContainer>
       <Div_Wrapper>
         <Outlet />
       </Div_Wrapper>
       <Footer_Container>
         <Paragraph_Styled>
-          Made by <Link_Footer href={urls.warriorkGitLab}>Ihor Fesina</Link_Footer>, a student of a{' '}
-          <Link_Footer href={urls.itAbsolvent}>IT absolvent</Link_Footer>
+          Made by <Link_Styled href={urls.warriorkGitLab}>Ihor Fesina</Link_Styled>, a student of a{' '}
+          <Link_Styled href={urls.itAbsolvent}>IT absolvent</Link_Styled>
         </Paragraph_Styled>
       </Footer_Container>
     </>
@@ -32,7 +31,7 @@ const Div_HeaderContainer = styled.header`
   justify-content: space-evenly;
   align-items: center;
 `
-const Link_Styled = styled(Link)`
+const Link_Router = styled(Link)`
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -61,15 +60,4 @@ const Paragraph_Styled = styled.p`
   line-height: 1.2;
   color: white;
   text-align: center;
-`
-const Link_Footer = styled(Link_Hover)`
-  color: ${styles.color.brown};
-  text-decoration: none;
-  width: 940px;
-  cursor: pointer;
-    &:hover {
-      transform: translate(0, -2px);
-      transition: 0.5s;
-    }
-  } ;
 `

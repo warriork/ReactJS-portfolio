@@ -1,7 +1,7 @@
 import { JShistory } from './JShistory/JShistory'
-import { JShistoryURL } from './routerPath'
 import { Layout } from './Layout'
 import { Link, Route, Routes } from 'react-router-dom'
+import { urls } from './urls'
 import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 
@@ -10,8 +10,8 @@ export const App = () => {
     <>
       <Global />
       <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route path={JShistoryURL} element={<JShistory />} />
+        <Route path={urls.layout} element={<Layout />}>
+          <Route path={urls.jsHistory} element={<JShistory />} />
         </Route>
       </Routes>
     </>

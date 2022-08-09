@@ -1,7 +1,9 @@
-import { Link_Hover } from '../components/Link_Hover'
+import { Link_Styled } from '../components/Link_Styled'
 import { styles } from '../theme'
 import { urls } from '../urls'
 import React from 'react'
+import historyLogo from './history.png'
+import jsLogo from './jsLogo.png'
 import styled from 'styled-components'
 export const JShistory = () => {
   return (
@@ -168,7 +170,7 @@ const H1_Styled = styled.h1`
     background-size: 22px 22px;
     width: 22px;
     height: 22px;
-    background-image: url('./js.png');
+    background-image: url(${jsLogo});
   }
 `
 
@@ -180,18 +182,13 @@ const H2_Styled = styled.h2`
     background-size: 22px 22px;
     width: 22px;
     height: 22px;
-    background-image: url('./history.png');
+    background-image: url(${jsLogo}});
   }
 `
 const Paragraph_Styled = styled.p`
   padding: 10px 20px;
   max-width: 940px;
   line-height: 1.5;
-`
-const Link_Styled = styled(Link_Hover)`
-  color: ${styles.color.blue};
-  text-decoration: none;
-  cursor: pointer;
 `
 const Th_Styled = styled.th`
   font-weight: bold;
