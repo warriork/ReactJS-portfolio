@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 export const Link_Styled = styled.a`
   text-decoration: none;
-  color: blueviolet;
+  color: ${styles.color.blueviolet};
   cursor: pointer;
   &:hover {
-    color: green;
+    color: ${styles.color.green};
     text-decoration: underline;
   }
 `
