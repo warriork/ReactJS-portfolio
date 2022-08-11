@@ -7,9 +7,7 @@ import styled from 'styled-components'
 type Props = {
   onclick?: () => void
 }
-type Btn = {
-  content: string
-}
+
 type State = {
   counter: number
 }
