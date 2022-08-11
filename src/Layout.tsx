@@ -39,10 +39,7 @@ const Link_Router = styled(Link)`
     color: ${styles.color.green};
     transform: translate(0, -2px);
     transition: 0.5s;
-    &:hover {
-      color: green;
-      text-decoration: underline;
-    }
+    text-decoration: underline;
   }
 `
 const Div_Wrapper = styled.div`
