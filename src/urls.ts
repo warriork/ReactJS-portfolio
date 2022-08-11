@@ -4,4 +4,5 @@ export const urls = {
   itAbsolvent: 'https://www.it-absolvent.cz',
   layout: '/',
   jsHistory: '/js-history',
+  counterApp: '/counter-app',
 }

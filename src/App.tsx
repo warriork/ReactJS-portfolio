@@ -1,3 +1,4 @@
+import { CounterApp } from './CounterApp/CounterApp'
 import { JShistory } from './JShistory/JShistory'
 import { Layout } from './Layout'
 import { Link, Route, Routes } from 'react-router-dom'
@@ -12,6 +13,7 @@ export const App = () => {
       <Routes>
         <Route path={urls.layout} element={<Layout />}>
           <Route path={urls.jsHistory} element={<JShistory />} />
+          <Route path={urls.counterApp} element={<CounterApp />} />
         </Route>
       </Routes>
     </>

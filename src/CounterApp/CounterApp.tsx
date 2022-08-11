@@ -5,8 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 type Props = {
-  content: string
-  onclick: () => void
+  onclick?: () => void
 }
 type Btn = {
   content: string
@@ -15,7 +14,7 @@ type State = {
   counter: number
 }
 
-class Buttons extends React.Component<Props, State> {
+class CounterApp extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
@@ -29,20 +28,20 @@ class Buttons extends React.Component<Props, State> {
         <Div_Calculator>
           <H1_Counter>{this.state.counter}</H1_Counter>
           <div>
-            <Button
+            <Styled_Button
               onClick={() => {
                 this.setState({ counter: this.state.counter + 1 })
               }}
             >
               +
-            </Button>
-            <Button
+            </Styled_Button>
+            <Styled_Button
               onClick={() => {
                 this.setState({ counter: this.state.counter - 1 })
               }}
             >
               -
-            </Button>
+            </Styled_Button>
           </div>
         </Div_Calculator>
       </Div_Wrapper>
@@ -70,12 +69,12 @@ const H1_Counter = styled.h1`
   border-radius: 10px;
   margin-bottom: 10px;
 `
-const Button = styled.button`
+const Styled_Button = styled.button`
   font-size: 30px;
   width: 50px;
   height: 50px;
   margin: 5px;
-  background: ${styles.color.darkBrown};
+  background: ${styles.color.brown};
   border-radius: 10px;
 `
-export { Buttons }
+export { CounterApp }
