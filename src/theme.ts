@@ -8,5 +8,7 @@ export const styles = {
     brown: 'rgb( 223, 177, 117)',
     wheat: 'rgb( 96, 87, 70)',
     blueviolet: 'rgb(138, 43, 226)',
+    lightblue: 'rgb(173, 216, 230)',
+    darkBrown: 'rgb(58, 30, 0)',
   },
 } as const
