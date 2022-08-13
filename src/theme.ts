@@ -10,5 +10,6 @@ export const styles = {
     blueviolet: 'rgb(138, 43, 226)',
     lightblue: 'rgb(173, 216, 230)',
     darkBrown: 'rgb(58, 30, 0)',
+    red: 'rgb(153, 51, 51)',
   },
 } as const

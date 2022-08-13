@@ -6,40 +6,66 @@ import { styles } from '../theme'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-function TodoApp() {
-  const [todos, setTodos] = useState<any[]>([])
+type Todo = {
+  id: number
+  text: string
+  isComplete: boolean
+}
 
-  const addTask = (userInput: string) => {
+const TodoApp = () => {
+  const [todos, setTodos] = useState<Todo[]>([])
+
+  const addTodo = (userInput: string) => {
     if (userInput) {
-      const newItem = {
+      const newTodo = {
         id: Math.floor(Math.random() * 10000),
-        task: userInput,
-        complete: false,
+        text: userInput,
+        isComplete: false,
       }
-      setTodos([...todos, newItem])
+      setTodos([newTodo, ...todos])
     }
   }
 
-  const removeTask = (id: string) => {
-    setTodos([...todos.filter(todo => todo.id !== id)])
-  }
-
-  const handleToggle = (id: string) => {
+  const removeTodo = (id: number) => {
     setTodos([
-      ...todos.map(todo => (todo.id === id ? { ...todo, complete: !todo.complete } : { ...todo })),
+      ...todos.filter(todo => {
+        return todo.id !== id
+      }),
+    ])
+  }
+  const handleToggle = (id: number) => {
+    setTodos([
+      ...todos.map(todo =>
+        todo.id === id ? { ...todo, isComplete: !todo.isComplete } : { ...todo }
+      ),
     ])
   }
 
   return (
-    <div className='App'>
-      <header>
-        <h1>todos: {todos.length}</h1>
-      </header>
-      <TodoForm addTask={addTask} />
-      {todos.map(todo => {
-        return <Todo todo={todo} key={todo.id} toggleTask={handleToggle} removeTask={removeTask} />
-      })}
-    </div>
+    <>
+      <Div_Container>
+        <H1_Styled>todos: {todos.length}</H1_Styled>
+
+        <TodoForm addTodo={addTodo} />
+        {todos.map(todo => {
+          return (
+            <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
+          )
+        })}
+      </Div_Container>
+    </>
   )
 }
+const H1_Styled = styled.h1`
+  text-transform: uppercase;
+  color: ${styles.color.red};
+`
+const Div_Container = styled.div`
+  margin: 0 auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 export { TodoApp }

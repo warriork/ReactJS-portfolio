@@ -1,29 +1,49 @@
 import { styles } from '../theme'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 type Props = {
   todo: {
-    id: string
-    complete: boolean
-    task: string
+    id: number
+    isComplete: boolean
+    text: string
   }
-  toggleTask: (e: any) => void
-  removeTask: (e: any) => void
+  toggleTodo: (id: number) => void
+  removeTodo: (id: number) => void
 }
 
-const Todo = ({ todo, toggleTask, removeTask }: Props) => {
+type TextProps = {
+  isComplete: boolean
+}
+
+const Todo = (props: Props) => {
   return (
-    <div key={todo.id} className='item-todo'>
-      <div
-        className={todo.complete ? 'item-text strike' : 'item-text'}
-        onClick={() => toggleTask(todo.id)}
-      >
-        {todo.task}
-      </div>
-      <div className='item-delete' onClick={() => removeTask(todo.id)}></div>
-    </div>
+    <Div_Todo key={props.todo.id}>
+      <Div_Text isComplete={props.todo.isComplete} onClick={() => props.toggleTodo(props.todo.id)}>
+        {props.todo.text}
+      </Div_Text>
+      <Div_Delete onClick={() => props.removeTodo(props.todo.id)}>x</Div_Delete>
+    </Div_Todo>
   )
 }
+const Div_Todo = styled.div`
+  display: flex;
+  padding: 10px;
+`
+const Div_Text = styled.div<TextProps>`
+  text-decoration: ${props => (props.isComplete ? 'line-through' : 'none')};
+  color: ${props => (props.isComplete ? styles.color.grey : 'black')};
+  line-height: 2rem;
+  width: 160px;
+  cursor: pointer;
+`
+const Div_Delete = styled.div`
+  text-align: center;
+  line-height: 2rem;
+  padding: 0 10px;
+  color: ${styles.color.red};
 
+  width: 35px;
+  cursor: pointer;
+`
 export { Todo }
