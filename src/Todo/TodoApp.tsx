@@ -16,16 +16,9 @@ export type TodoType = {
 
 export const TodoApp = () => {
   const [todos, setTodos] = useLocalStorage<TodoType[]>('todos', [] as TodoType[])
-  const setTodosWithLocalStorage = (todos: TodoType[]) => {
-    setTodos(todos)
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }
 
   const [filter, setFilter] = useLocalStorage<'all' | 'active' | 'completed'>('filter', 'all')
-  const setFiltherWithLocalStorage = (value: 'all' | 'active' | 'completed') => {
-    setFilter(value)
-    localStorage.setItem('filter', value)
-  }
+
   const addTodo = (userInput: string) => {
     if (userInput) {
       const newTodo = {
@@ -33,14 +26,14 @@ export const TodoApp = () => {
         text: userInput,
         isComplete: false,
       }
-      setTodosWithLocalStorage([newTodo, ...todos])
+      setTodos([newTodo, ...todos])
     }
   }
 
-  const removeTodo = (id: number) => setTodosWithLocalStorage(todos.filter(todo => todo.id !== id))
+  const removeTodo = (id: number) => setTodos(todos.filter(todo => todo.id !== id))
 
   const handleToggle = (id: number) => {
-    setTodosWithLocalStorage(
+    setTodos(
       todos.map(todo => (todo.id === id ? { ...todo, isComplete: !todo.isComplete } : { ...todo }))
     )
   }
@@ -61,11 +54,9 @@ export const TodoApp = () => {
         <TodoForm addTodo={addTodo} />
         {todos.map(todo => renderTodo(todo, filter))}
         <Div_Buttons>
-          <Button_Styled onClick={() => setFiltherWithLocalStorage('all')}>all</Button_Styled>
-          <Button_Styled onClick={() => setFiltherWithLocalStorage('active')}>active</Button_Styled>
-          <Button_Styled onClick={() => setFiltherWithLocalStorage('completed')}>
-            completed
-          </Button_Styled>
+          <Button_Styled onClick={() => setFilter('all')}>all</Button_Styled>
+          <Button_Styled onClick={() => setFilter('active')}>active</Button_Styled>
+          <Button_Styled onClick={() => setFilter('completed')}>completed</Button_Styled>
         </Div_Buttons>
       </>
     </Div_Container>
