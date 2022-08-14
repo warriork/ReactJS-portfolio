@@ -5,14 +5,9 @@ import styled, { css } from 'styled-components'
 
 type Props = {
   todo: TodoType
-  toggleTodo: (id: number) => void
-  removeTodo: (id: number) => void
+  toggleTodo: (id: TodoType['id']) => void
+  removeTodo: (id: TodoType['id']) => void
 }
-
-type TextProps = {
-  isComplete: boolean
-}
-
 export const Todo = (props: Props) => {
   return (
     <Div_Todo key={props.todo.id}>
@@ -27,6 +22,10 @@ const Div_Todo = styled.div`
   display: flex;
   padding: 10px;
 `
+type TextProps = {
+  isComplete: boolean
+}
+
 const Div_Text = styled.div<TextProps>`
   text-decoration: ${props => (props.isComplete ? 'line-through' : 'none')};
   color: ${props => (props.isComplete ? styles.color.grey : 'black')};
@@ -39,7 +38,11 @@ const Div_Delete = styled.div`
   line-height: 2rem;
   padding: 0 10px;
   color: ${styles.color.red};
-
   width: 35px;
+
   cursor: pointer;
+  &:hover {
+    border: 2px solid ${styles.color.grey};
+    border-radius: 50%;
+  }
 `

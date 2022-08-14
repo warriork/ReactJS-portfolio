@@ -3,7 +3,7 @@ import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
 import { Todo } from './Todo'
 import { TodoForm } from './TodoForm'
-import { generateID } from '../utils'
+import { generateID, useLocalStorage } from '../utils'
 import { styles } from '../theme'
 import React, { useState } from 'react'
 import styled from 'styled-components'
@@ -15,14 +15,14 @@ export type TodoType = {
 }
 
 export const TodoApp = () => {
-  const [todos, setTodos] = useState<TodoType[]>(JSON.parse(localStorage.getItem('todos') || '[]'))
+  const [todos, setTodos] = useLocalStorage<TodoType[]>('todos', [] as TodoType[])
   const setTodosWithLocalStorage = (todos: TodoType[]) => {
     setTodos(todos)
     localStorage.setItem('todos', JSON.stringify(todos))
   }
 
-  const [filter, setFilter] = useState(localStorage.getItem('filter') || 'all')
-  const setFiltherWithLocalStorage = (value: string) => {
+  const [filter, setFilter] = useLocalStorage<'all' | 'active' | 'completed'>('filter', 'all')
+  const setFiltherWithLocalStorage = (value: 'all' | 'active' | 'completed') => {
     setFilter(value)
     localStorage.setItem('filter', value)
   }
@@ -59,7 +59,7 @@ export const TodoApp = () => {
       <>
         <H1_Styled>todos</H1_Styled>
         <TodoForm addTodo={addTodo} />
-        {todos.map((todo: TodoType) => renderTodo(todo, filter))}
+        {todos.map(todo => renderTodo(todo, filter))}
         <Div_Buttons>
           <Button_Styled onClick={() => setFiltherWithLocalStorage('all')}>all</Button_Styled>
           <Button_Styled onClick={() => setFiltherWithLocalStorage('active')}>active</Button_Styled>
