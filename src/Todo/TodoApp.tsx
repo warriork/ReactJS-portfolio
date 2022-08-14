@@ -45,11 +45,11 @@ export const TodoApp = () => {
     )
   }
   const renderTodo = (todo: TodoType, filter: string) => {
-    return filter === 'completed' && todo.isComplete ? (
+    return filter === 'all' ? (
+      <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
+    ) : filter === 'completed' && todo.isComplete ? (
       <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
     ) : filter === 'active' && !todo.isComplete ? (
-      <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
-    ) : filter === 'all' ? (
       <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
     ) : null
   }
