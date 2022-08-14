@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Button_Styled = styled.button`
+export const Button = styled.button`
   height: 20px;
   padding: 5px;
   background: none;

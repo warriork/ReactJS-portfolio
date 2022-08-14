@@ -1,4 +1,4 @@
-import { Button_Styled } from '../components/Button_Styled'
+import { Button } from '../components/Button'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
 import { Todo } from './Todo'
@@ -15,19 +15,20 @@ export type TodoType = {
 }
 
 export const TodoApp = () => {
-  const [todos, setTodos] = useLocalStorage<TodoType[]>('todos', [] as TodoType[])
+  const [todos, setTodos] = useLocalStorage('todos', [] as TodoType[])
 
   const [filter, setFilter] = useLocalStorage<'all' | 'active' | 'completed'>('filter', 'all')
 
   const addTodo = (userInput: string) => {
-    if (userInput) {
-      const newTodo = {
+    if (!userInput) return
+    setTodos([
+      {
         id: generateID(),
         text: userInput,
         isComplete: false,
-      }
-      setTodos([newTodo, ...todos])
-    }
+      },
+      ...todos,
+    ])
   }
 
   const removeTodo = (id: number) => setTodos(todos.filter(todo => todo.id !== id))
@@ -54,9 +55,9 @@ export const TodoApp = () => {
         <TodoForm addTodo={addTodo} />
         {todos.map(todo => renderTodo(todo, filter))}
         <Div_Buttons>
-          <Button_Styled onClick={() => setFilter('all')}>all</Button_Styled>
-          <Button_Styled onClick={() => setFilter('active')}>active</Button_Styled>
-          <Button_Styled onClick={() => setFilter('completed')}>completed</Button_Styled>
+          <Button onClick={() => setFilter('all')}>all</Button>
+          <Button onClick={() => setFilter('active')}>active</Button>
+          <Button onClick={() => setFilter('completed')}>completed</Button>
         </Div_Buttons>
       </>
     </Div_Container>

@@ -8,16 +8,15 @@ type Props = {
   toggleTodo: (id: TodoType['id']) => void
   removeTodo: (id: TodoType['id']) => void
 }
-export const Todo = (props: Props) => {
-  return (
-    <Div_Todo key={props.todo.id}>
-      <Div_Text isComplete={props.todo.isComplete} onClick={() => props.toggleTodo(props.todo.id)}>
-        {props.todo.text}
-      </Div_Text>
-      <Div_Delete onClick={() => props.removeTodo(props.todo.id)}>x</Div_Delete>
-    </Div_Todo>
-  )
-}
+export const Todo = (props: Props) => (
+  <Div_Todo key={props.todo.id}>
+    <Div_Text isComplete={props.todo.isComplete} onClick={() => props.toggleTodo(props.todo.id)}>
+      {props.todo.text}
+    </Div_Text>
+    <Div_Delete onClick={() => props.removeTodo(props.todo.id)}>x</Div_Delete>
+  </Div_Todo>
+)
+
 const Div_Todo = styled.div`
   display: flex;
   padding: 10px;
