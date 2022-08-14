@@ -38,22 +38,27 @@ export const TodoApp = () => {
       todos.map(todo => (todo.id === id ? { ...todo, isComplete: !todo.isComplete } : { ...todo }))
     )
   }
-  const renderTodo = (todo: TodoType, filter: string) => {
-    return filter === 'all' ? (
-      <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
-    ) : filter === 'completed' && todo.isComplete ? (
-      <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
-    ) : filter === 'active' && !todo.isComplete ? (
-      <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
-    ) : null
-  }
 
+  const renderTodo = (todos: TodoType[], filter: string) =>
+    todos
+      .filter(todo => {
+        return filter === 'all'
+          ? todo
+          : filter === 'completed' && todo.isComplete
+          ? todo
+          : filter === 'active' && !todo.isComplete
+          ? todo
+          : null
+      })
+      .map(todo => (
+        <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
+      ))
   return (
     <Div_Container>
       <>
         <H1_Styled>todos</H1_Styled>
         <TodoForm addTodo={addTodo} />
-        {todos.map(todo => renderTodo(todo, filter))}
+        {renderTodo(todos, filter)}
         <Div_Buttons>
           <Button onClick={() => setFilter('all')}>all</Button>
           <Button onClick={() => setFilter('active')}>active</Button>

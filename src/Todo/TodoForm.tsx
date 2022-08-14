@@ -6,13 +6,15 @@ type addTodoType = { addTodo: (text: string) => void }
 
 export const TodoForm = (props: addTodoType) => {
   const [userInput, setUserInput] = useState('')
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    props.addTodo(userInput)
-    setUserInput('')
-  }
+
   return (
-    <Form_Styled onSubmit={handleSubmit}>
+    <Form_Styled
+      onSubmit={e => {
+        e.preventDefault()
+        props.addTodo(userInput)
+        setUserInput('')
+      }}
+    >
       <Input_Styled
         value={userInput}
         type='text'
