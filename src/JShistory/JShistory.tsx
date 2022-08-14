@@ -156,7 +156,7 @@ export const JShistory = () => {
   )
 }
 const Section_Styled = styled.section`
-  margin-top: 20px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

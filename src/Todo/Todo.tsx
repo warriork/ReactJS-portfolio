@@ -1,13 +1,10 @@
+import { TodoType } from './TodoApp'
 import { styles } from '../theme'
 import React from 'react'
 import styled, { css } from 'styled-components'
 
 type Props = {
-  todo: {
-    id: number
-    isComplete: boolean
-    text: string
-  }
+  todo: TodoType
   toggleTodo: (id: number) => void
   removeTodo: (id: number) => void
 }
@@ -16,7 +13,7 @@ type TextProps = {
   isComplete: boolean
 }
 
-const Todo = (props: Props) => {
+export const Todo = (props: Props) => {
   return (
     <Div_Todo key={props.todo.id}>
       <Div_Text isComplete={props.todo.isComplete} onClick={() => props.toggleTodo(props.todo.id)}>
@@ -46,4 +43,3 @@ const Div_Delete = styled.div`
   width: 35px;
   cursor: pointer;
 `
-export { Todo }

@@ -4,13 +4,8 @@ import styled from 'styled-components'
 
 type addTodoType = { addTodo: (text: string) => void }
 
-const TodoForm = (props: addTodoType) => {
+export const TodoForm = (props: addTodoType) => {
   const [userInput, setUserInput] = useState('')
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput(e.currentTarget.value)
-  }
-
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     props.addTodo(userInput)
@@ -21,7 +16,7 @@ const TodoForm = (props: addTodoType) => {
       <Input_Styled
         value={userInput}
         type='text'
-        onChange={handleChange}
+        onChange={e => setUserInput(e.currentTarget.value)}
         placeholder='What needs to be done?'
       />
       <Button_Styled>Add</Button_Styled>
@@ -52,4 +47,3 @@ const Button_Styled = styled.button`
   }
   transition: 0.2s;
 `
-export { TodoForm }
