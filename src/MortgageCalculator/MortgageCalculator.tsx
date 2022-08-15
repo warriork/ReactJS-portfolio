@@ -6,12 +6,6 @@ import { styles } from '../theme'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-type Input = {
-  period: number
-  price: number
-  rate: number
-}
-
 export const MortgageCalculator = () => {
   const [period, setPeriod] = useLocalStorage('period', 10)
   const [price, setPrice] = useLocalStorage('price', 3_000_000)
