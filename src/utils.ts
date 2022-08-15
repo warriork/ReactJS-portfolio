@@ -15,7 +15,7 @@ export const useLocalStorage = <Type>(key: string, initialValue: Type) => {
       return initialValue
     }
   })
-
+  //inpired by https://usehooks.com/useLocalStorage/
   const setValue = (value: Type | ((value: Type) => Type)) => {
     try {
       const valueToStore = value instanceof Function ? value(storedValue) : value
