@@ -8,8 +8,10 @@ export const Layout = () => {
   return (
     <>
       <Div_HeaderContainer>
+        <Link_Router to={urls.homepage}>Home</Link_Router>
         <Link_Router to={urls.jsHistory}>JavaScript history</Link_Router>
         <Link_Router to={urls.counterApp}>Counter app</Link_Router>
+        <Link_Router to={urls.todoApp}>Todo app</Link_Router>
       </Div_HeaderContainer>
       <Div_Wrapper>
         <Outlet />

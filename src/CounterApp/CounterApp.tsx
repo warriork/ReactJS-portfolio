@@ -7,9 +7,7 @@ import styled from 'styled-components'
 type Props = {
   onclick?: () => void
 }
-type Btn = {
-  content: string
-}
+
 type State = {
   counter: number
 }
@@ -76,5 +74,9 @@ const Styled_Button = styled.button`
   margin: 5px;
   background: ${styles.color.brown};
   border-radius: 10px;
+  transition: 0.5s;
+  &:hover {
+    background-color: ${styles.color.darkBrown};
+  }
 `
 export { CounterApp }

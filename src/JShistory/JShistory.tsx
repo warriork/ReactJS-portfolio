@@ -156,7 +156,7 @@ export const JShistory = () => {
   )
 }
 const Section_Styled = styled.section`
-  margin-top: 20px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -182,7 +182,7 @@ const H2_Styled = styled.h2`
     background-size: 22px 22px;
     width: 22px;
     height: 22px;
-    background-image: url(${jsLogo}});
+    background-image: url(${historyLogo});
   }
 `
 const Paragraph_Styled = styled.p`

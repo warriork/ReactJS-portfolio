@@ -6,4 +6,5 @@ export const urls = {
   homepage: '/',
   jsHistory: '/js-history',
   counterApp: '/counter-app',
+  todoApp: '/todo',
 }
