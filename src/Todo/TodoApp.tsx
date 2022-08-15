@@ -16,7 +16,6 @@ export type TodoType = {
 
 export const TodoApp = () => {
   const [todos, setTodos] = useLocalStorage('todos', [] as TodoType[])
-
   const [filter, setFilter] = useLocalStorage<'all' | 'active' | 'completed'>('filter', 'all')
 
   const addTodo = (userInput: string) => {

@@ -7,4 +7,5 @@ export const urls = {
   jsHistory: '/js-history',
   counterApp: '/counter-app',
   todoApp: '/todo',
+  mortgageCalculator: '/mortgage-calculator',
 }
