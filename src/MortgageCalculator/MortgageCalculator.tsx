@@ -1,23 +1,25 @@
 import { Button } from '../components/Button'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
-import { generateID, useLocalStorage } from '../utils'
+//import { generateID, useLocalStorage } from '../utils'
 import { styles } from '../theme'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-export const MortgageCalculator = () => {
-  const [period, setPeriod] = useLocalStorage('period', 10)
-  const [price, setPrice] = useLocalStorage('price', 3_000_000)
-  const [firstPayment, setFirstPayment] = useLocalStorage('firstPayment', 0)
-  const [rate, setRate] = useLocalStorage('rate', 5)
-  const handleChange = () => {}
-  const calcMortgage = (r: number, n: number, p: number, f: number) => {
+const calcMortgage = (rate: number, period: number, price: number, firstPayment: number) => {
     const sum =
-      ((((p - f) * r) / 100 / 12) * (1 + r / 100 / 12) ** (12 * 30)) /
-      ((1 + r / 100 / 12) ** (12 * 30) - 1)
+      ((((price - firstPayment) * rate) / 100 / 12) * (1 + rate / 100 / 12) ** (12 * period)) /
+      ((1 + rate / 100 / 12) ** (12 * period) - 1)
     return sum < 0 ? 0 : sum
   }
+
+export const MortgageCalculator = () => {
+
+  const [period, setPeriod] = useState(10)
+  const [price, setPrice] = useState(3_000_000)
+  const [firstPayment, setFirstPayment] = useState(0)
+  const [rate, setRate] = useState(5)
+
   return (
     <Div_Container>
       <h1>Mortage calculator</h1>
@@ -62,7 +64,7 @@ export const MortgageCalculator = () => {
             step={50_000}
             type='range'
             name='firstPayment'
-            value={firstPayment}
+            value={firstPayment < price ? firstPayment : price}
             onChange={e => setFirstPayment(Number(e.target.value))}
           />
         </div>
