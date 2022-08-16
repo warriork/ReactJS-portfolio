@@ -3,6 +3,7 @@ import { Homepage } from './Homepage/Homepage'
 import { JShistory } from './JShistory/JShistory'
 import { Layout } from './Layout'
 import { Link, Route, Routes } from 'react-router-dom'
+import { MortgageCalculator } from './MortgageCalculator/MortgageCalculator'
 import { TodoApp } from './Todo/TodoApp'
 import { urls } from './urls'
 import React from 'react'
@@ -18,6 +19,7 @@ export const App = () => {
           <Route path={urls.jsHistory} element={<JShistory />} />
           <Route path={urls.counterApp} element={<CounterApp />} />
           <Route path={urls.todoApp} element={<TodoApp />} />
+          <Route path={urls.mortgageCalculator} element={<MortgageCalculator />} />
         </Route>
       </Routes>
     </>
