@@ -1,20 +1,18 @@
 import { Button } from '../components/Button'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
-//import { generateID, useLocalStorage } from '../utils'
 import { styles } from '../theme'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const calcMortgage = (rate: number, period: number, price: number, firstPayment: number) => {
-    const sum =
-      ((((price - firstPayment) * rate) / 100 / 12) * (1 + rate / 100 / 12) ** (12 * period)) /
-      ((1 + rate / 100 / 12) ** (12 * period) - 1)
-    return sum < 0 ? 0 : sum
-  }
+  return (
+    ((((price - firstPayment) * rate) / 100 / 12) * (1 + rate / 100 / 12) ** (12 * period)) /
+    ((1 + rate / 100 / 12) ** (12 * period) - 1)
+  )
+}
 
 export const MortgageCalculator = () => {
-
   const [period, setPeriod] = useState(10)
   const [price, setPrice] = useState(3_000_000)
   const [firstPayment, setFirstPayment] = useState(0)
@@ -55,7 +53,7 @@ export const MortgageCalculator = () => {
             type='number'
             name='firstPayment'
             id='price'
-            value={firstPayment}
+            value={firstPayment < price ? firstPayment : price}
             onChange={e => setFirstPayment(Number(e.target.value))}
           />
           <Input_Range
@@ -69,7 +67,7 @@ export const MortgageCalculator = () => {
           />
         </div>
         <div>
-          <Label_Styled htmlFor='period'>Select loan term </Label_Styled>
+          <Label_Styled htmlFor='period'>Select a loan term </Label_Styled>
           <Input_Number
             min={5}
             max={40}
