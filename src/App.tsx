@@ -1,4 +1,5 @@
 import { CounterApp } from './CounterApp/CounterApp'
+import { HackerTyper } from './hacker-typer/HackerTyper'
 import { Homepage } from './Homepage/Homepage'
 import { JShistory } from './JShistory/JShistory'
 import { Layout } from './Layout'
@@ -20,6 +21,7 @@ export const App = () => {
           <Route path={urls.counterApp} element={<CounterApp />} />
           <Route path={urls.todoApp} element={<TodoApp />} />
           <Route path={urls.mortgageCalculator} element={<MortgageCalculator />} />
+          <Route path={urls.hackerTyper} element={<HackerTyper />} />
         </Route>
       </Routes>
     </>

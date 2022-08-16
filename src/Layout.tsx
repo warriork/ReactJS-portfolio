@@ -13,6 +13,7 @@ export const Layout = () => {
         <Link_Router to={urls.counterApp}>Counter app</Link_Router>
         <Link_Router to={urls.todoApp}>Todo app</Link_Router>
         <Link_Router to={urls.mortgageCalculator}>Mortgage calculator</Link_Router>
+        <Link_Router to={urls.hackerTyper}>Hacker Typer</Link_Router>
       </Div_HeaderContainer>
       <Div_Wrapper>
         <Outlet />
