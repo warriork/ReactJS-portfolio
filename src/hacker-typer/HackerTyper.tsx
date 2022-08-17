@@ -22,17 +22,14 @@ export const HackerTyper = () => {
         autoFocus={true}
         value={pointerIndex === 0 ? welcomeMsg : code.slice(0, pointerIndex)}
         onKeyDown={e => {
-          e.key === 'Shift'
-            ? setAccessMsg('denied')
-            : e.key === 'Enter'
-            ? setAccessMsg('granted')
-            : e.key === 'Escape'
-            ? setAccessMsg(null)
-            : e.key
-            ? pointerIndex < code.length
-              ? setPointerIndex(pointerIndex + Math.floor(Math.random() * 4 + 3))
-              : null
-            : null
+          if(e.key === 'Shift'){
+             setAccessMsg('denied')}
+            else if( e.key === 'Enter')
+            { setAccessMsg('granted')}
+            else if( e.key === 'Escape')
+            { setAccessMsg(null)}
+            else if (e.key && pointerIndex < code.length){
+             setPointerIndex(pointerIndex + Math.floor(Math.random() * 4 + 3))}
         }}
       ></Textarea_Styled>
       <Div_Banner access={accessMsg}>
