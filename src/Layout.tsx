@@ -14,6 +14,7 @@ export const Layout = () => {
         <Link_Router to={urls.todoApp}>Todo app</Link_Router>
         <Link_Router to={urls.mortgageCalculator}>Mortgage calculator</Link_Router>
         <Link_Router to={urls.hackerTyper}>Hacker Typer</Link_Router>
+        <Link_Router to={urls.memoryGame}>Memory game</Link_Router>
       </Div_HeaderContainer>
       <Div_Wrapper>
         <Outlet />

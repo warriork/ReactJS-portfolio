@@ -27,3 +27,7 @@ export const useLocalStorage = <Type>(key: string, initialValue: Type) => {
   }
   return [storedValue, setValue] as const
 }
+
+export const timeout = (ms: number) => new Promise(resolve => setTimeout(() => resolve(null), ms))
+
+export const getShuffledArray = (arr: any[]) => arr.sort(() => Math.random() - 0.5)
