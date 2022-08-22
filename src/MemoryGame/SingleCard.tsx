@@ -25,9 +25,8 @@ export const SingleCard = (props: CardProps) => {
       <Back_Img
         src={cardCover}
         onClick={() => {
-          if (!props.disabled) {
-            props.handleChoice(props.card)
-          }
+          if (props.disabled) return
+          props.handleChoice(props.card)
         }}
         alt='card back'
         isFlipped={props.isFlipped}
