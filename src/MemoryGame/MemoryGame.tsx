@@ -16,6 +16,9 @@ export type Card = {
   img: string
   isMatched: boolean
 }
+type Turns = {
+  show: boolean
+}
 
 export const MemoryGame = () => {
   const getShuffledCards = (cards: string[]) => {
@@ -65,7 +68,7 @@ export const MemoryGame = () => {
   return (
     <Div_Wrapp>
       <h1>Memory game</h1>
-      <button onClick={() => getShuffledCards(cards)}>New Game</button>
+      <Button onClick={() => getShuffledCards(cards)}>New Game</Button>
       <Div_Gameboard>
         {cardsBoard.map((card: Card) => (
           <SingleCard
@@ -77,7 +80,7 @@ export const MemoryGame = () => {
           />
         ))}
       </Div_Gameboard>
-      <p>Turns: {turns}</p>
+      <Turns_P show={turns > 0}>Turns: {turns}</Turns_P>
     </Div_Wrapp>
   )
 }
@@ -89,8 +92,30 @@ const Div_Wrapp = styled(Div_Wrapper)`
   background-position: center;
 `
 const Div_Gameboard = styled.div`
-  margin-top: 30px;
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
+  margin-bottom: 10px;
+`
+const Button = styled.button`
+  background: none;
+  backdrop-filter: blur(5px);
+  padding: 5px 10px;
+  border: 2px solid ${styles.color.black};
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  &:active {
+    transform: translate(0, 2px);
+  }
+  transition: 0.15s;
+`
+const Turns_P = styled.p<Turns>`
+  display: ${props => (props.show ? 'block' : 'none')};
+  font-weight: 700;
+  backdrop-filter: blur(5px);
+  padding: 10px 15px;
+  border: 1px solid ${styles.color.black};
+  border-radius: 5px;
 `

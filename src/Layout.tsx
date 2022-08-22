@@ -56,7 +56,7 @@ const Footer_Container = styled.footer`
   justify-content: center;
   align-items: center;
   background-color: black;
-  height: 50px;
+  height: 30px;
   width: 100%;
 `
 const Paragraph_Styled = styled.p`

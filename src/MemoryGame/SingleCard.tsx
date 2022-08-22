@@ -38,8 +38,8 @@ export const SingleCard = (props: CardProps) => {
 const CardContainer_div = styled.div`
   cursor: pointer;
   position: relative;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   padding: 5px;
   display: flex;
   justify-content: center;
@@ -49,7 +49,7 @@ const CardContainer_div = styled.div`
   backdrop-filter: blur(5px);
 `
 const Front_Img = styled.img<ImgProps>`
-  height: 90px;
+  height: 70px;
   width: auto;
   display: block;
   position: absolute;
@@ -58,7 +58,7 @@ const Front_Img = styled.img<ImgProps>`
   transition-delay: ${props => (props.isFlipped ? '0.2s' : '0s')};
 `
 const Back_Img = styled.img<ImgProps>`
-  height: 90px;
+  height: 70px;
   width: auto;
   display: block;
   transform: ${props => (props.isFlipped ? 'rotateY(90deg)' : 'rotateY(0deg)')};
