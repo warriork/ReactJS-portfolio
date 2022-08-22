@@ -33,21 +33,25 @@ export const MemoryGame = () => {
   const [firstChoice, setFirstChoice] = useState(null as Card | null)
   const [secondChoice, setSecondChoice] = useState(null as Card | null)
   const [disabled, setDisabled] = useState(false)
-  const handleChoice = async (card: Card) => {
-    firstChoice ? setSecondChoice(card) : setFirstChoice(card)
-  }
+
   const resetTurn = () => {
     setFirstChoice(null)
     setSecondChoice(null)
     setTurns(turns => turns + 1)
     setDisabled(false)
   }
-  useEffect(() => {
-    if (firstChoice && secondChoice) {
+
+  const handleChoice = async (card: Card) => {
+    if (firstChoice) {
+      setSecondChoice(card)
+    } else if (!firstChoice) {
+      setFirstChoice(card)
+    }
+    if (firstChoice && firstChoice.id !== card.id) {
       setDisabled(true)
-      if (firstChoice.img === secondChoice.img) {
-        setCardsBoard(
-          cardsBoard.map(card =>
+      if (firstChoice.img === card?.img) {
+        setCardsBoard(prevCardsBoard =>
+          prevCardsBoard.map(card =>
             card.img === firstChoice.img ? { ...card, isMatched: true } : card
           )
         )
@@ -56,7 +60,8 @@ export const MemoryGame = () => {
         setTimeout(() => resetTurn(), 1000)
       }
     }
-  }, [firstChoice, secondChoice])
+  }
+
   return (
     <Div_Wrapp>
       <h1>Memory game</h1>
