@@ -20,17 +20,15 @@ type Turns = {
   show: boolean
 }
 
-export const MemoryGame = () => {
-  const getShuffledCards = (cards: string[]) => {
-    const shuffledCards = getShuffledArray([...cards, ...cards]).map(card => ({
-      id: generateID(),
-      img: card,
-      isMatched: false,
-    }))
-    setCardsBoard(shuffledCards)
-    setTurns(0)
-  }
+const getShuffledCards = (cards: string[]): Card[] => {
+  return getShuffledArray([...cards, ...cards]).map(card => ({
+    id: generateID(),
+    img: card,
+    isMatched: false,
+  }))
+}
 
+export const MemoryGame = () => {
   const [cardsBoard, setCardsBoard] = useState([] as Card[])
   const [turns, setTurns] = useState(0)
   const [firstChoice, setFirstChoice] = useState(null as Card | null)
@@ -60,7 +58,8 @@ export const MemoryGame = () => {
         )
         resetTurn()
       } else {
-        setTimeout(() => resetTurn(), 1000)
+        await timeout(500)
+        resetTurn()
       }
     }
   }
@@ -68,9 +67,16 @@ export const MemoryGame = () => {
   return (
     <Div_Wrapp>
       <h1>Memory game</h1>
-      <Button onClick={() => getShuffledCards(cards)}>New Game</Button>
+      <Button
+        onClick={() => {
+          setCardsBoard(getShuffledCards(cards))
+          setTurns(0)
+        }}
+      >
+        New Game
+      </Button>
       <Div_Gameboard>
-        {cardsBoard.map((card: Card) => (
+        {cardsBoard.map(card => (
           <SingleCard
             key={card.id}
             card={card}

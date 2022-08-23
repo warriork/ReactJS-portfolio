@@ -18,22 +18,20 @@ type ImgProps = {
   src: string
   isFlipped: boolean
 }
-export const SingleCard = (props: CardProps) => {
-  return (
-    <CardContainer_div>
-      <Front_Img src={props.card.img} isFlipped={props.isFlipped} alt='card front' />
-      <Back_Img
-        src={cardCover}
-        onClick={() => {
-          if (props.disabled) return
-          props.handleChoice(props.card)
-        }}
-        alt='card back'
-        isFlipped={props.isFlipped}
-      />
-    </CardContainer_div>
-  )
-}
+export const SingleCard = (props: CardProps) => (
+  <CardContainer_div>
+    <Front_Img src={props.card.img} isFlipped={props.isFlipped} alt='card front' />
+    <Back_Img
+      src={cardCover}
+      onClick={() => {
+        if (props.disabled) return
+        props.handleChoice(props.card)
+      }}
+      alt='card back'
+      isFlipped={props.isFlipped}
+    />
+  </CardContainer_div>
+)
 
 const CardContainer_div = styled.div`
   cursor: pointer;
@@ -43,7 +41,7 @@ const CardContainer_div = styled.div`
   padding: 5px;
   display: flex;
   justify-content: center;
-  box-shadow: 5px 7px 7px black;
+  box-shadow: 5px 7px 7px ${styles.color.black};
   border: 2px solid ${styles.color.black};
   border-radius: 5px;
   backdrop-filter: blur(5px);

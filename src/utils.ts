@@ -1,4 +1,5 @@
-import { useState } from 'react'
+// import { Card } from './MemoryGame/MemoryGame'
+import { createContext, useState } from 'react'
 import React from 'react'
 
 export const generateID = () => {
@@ -30,4 +31,4 @@ export const useLocalStorage = <Type>(key: string, initialValue: Type) => {
 
 export const timeout = (ms: number) => new Promise(resolve => setTimeout(() => resolve(null), ms))
 
-export const getShuffledArray = (arr: any[]) => arr.sort(() => Math.random() - 0.5)
+export const getShuffledArray = <T>(arr: T[]) => arr.sort(() => Math.random() - 0.5)
