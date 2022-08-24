@@ -9,4 +9,5 @@ export const urls = {
   todoApp: '/todo',
   mortgageCalculator: '/mortgage-calculator',
   hackerTyper: '/hacker-typer',
+  memoryGame: '/memory-game',
 }

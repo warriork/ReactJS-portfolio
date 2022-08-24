@@ -4,6 +4,7 @@ import { Homepage } from './Homepage/Homepage'
 import { JShistory } from './JShistory/JShistory'
 import { Layout } from './Layout'
 import { Link, Route, Routes } from 'react-router-dom'
+import { MemoryGame } from './MemoryGame/MemoryGame'
 import { MortgageCalculator } from './MortgageCalculator/MortgageCalculator'
 import { TodoApp } from './Todo/TodoApp'
 import { urls } from './urls'
@@ -22,6 +23,7 @@ export const App = () => {
           <Route path={urls.todoApp} element={<TodoApp />} />
           <Route path={urls.mortgageCalculator} element={<MortgageCalculator />} />
           <Route path={urls.hackerTyper} element={<HackerTyper />} />
+          <Route path={urls.memoryGame} element={<MemoryGame />} />
         </Route>
       </Routes>
     </>

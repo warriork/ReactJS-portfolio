@@ -14,6 +14,7 @@ export const Layout = () => {
         <Link_Router to={urls.todoApp}>Todo app</Link_Router>
         <Link_Router to={urls.mortgageCalculator}>Mortgage calculator</Link_Router>
         <Link_Router to={urls.hackerTyper}>Hacker Typer</Link_Router>
+        <Link_Router to={urls.memoryGame}>Memory game</Link_Router>
       </Div_HeaderContainer>
       <Div_Wrapper>
         <Outlet />
@@ -55,7 +56,7 @@ const Footer_Container = styled.footer`
   justify-content: center;
   align-items: center;
   background-color: black;
-  height: 50px;
+  height: 30px;
   width: 100%;
 `
 const Paragraph_Styled = styled.p`
