@@ -1,21 +1,27 @@
 import { TodoType } from './TodoApp'
+import { TodosContext } from './TodoApp'
 import { styles } from '../theme'
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 type Props = {
   todo: TodoType
-  toggleTodo: (id: TodoType['id']) => void
-  removeTodo: (id: TodoType['id']) => void
+  key: TodoType['id']
 }
-export const Todo = (props: Props) => (
-  <Div_Todo key={props.todo.id}>
-    <Div_Text isComplete={props.todo.isComplete} onClick={() => props.toggleTodo(props.todo.id)}>
-      {props.todo.text}
-    </Div_Text>
-    <Div_Delete onClick={() => props.removeTodo(props.todo.id)}>x</Div_Delete>
-  </Div_Todo>
-)
+export const Todo = (props: Props) => {
+  const logic = useContext(TodosContext)
+  return (
+    <Div_Todo key={props.todo.id}>
+      <Div_Text
+        isComplete={props.todo.isComplete}
+        onClick={() => logic.handleToggleTodo(props.todo.id)}
+      >
+        {props.todo.text}
+      </Div_Text>
+      <Div_Delete onClick={() => logic.removeTodo(props.todo.id)}>x</Div_Delete>
+    </Div_Todo>
+  )
+}
 
 const Div_Todo = styled.div`
   display: flex;
