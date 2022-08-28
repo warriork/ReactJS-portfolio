@@ -1,13 +1,7 @@
-import { Button } from '../components/Button'
-import { Div_Wrapper } from '../components/Div_Wrapper'
-import { Link } from 'react-router-dom'
-import { Todo } from './Todo'
-import { TodoForm } from './TodoForm'
+import { TodoList } from './TodoList'
 import { generateID, removeRedundantSpacesRegExp, useLocalStorage } from '../utils/helperFunctions'
 import { genericHookContextBuilder } from '../utils/createCustomContextHook'
-import { styles } from '../theme'
 import React, { useContext, useState } from 'react'
-import styled from 'styled-components'
 
 export type TodoType = {
   id: number
@@ -39,15 +33,15 @@ const useLogicState = () => {
     )
   }
   const getFilteredTodos = () =>
-    todos.filter(todo => {
-      return filter === 'all'
+    todos.filter(todo =>
+      filter === 'all'
         ? todo
         : filter === 'completed' && todo.isComplete
         ? todo
         : filter === 'active' && !todo.isComplete
         ? todo
         : null
-    })
+    )
   return {
     todos,
     setTodos,
@@ -66,36 +60,8 @@ export const { ContextProvider: TodoContextProvider, Context: TodosContext } =
 export const TodoApp = () => {
   const logic = useContext(TodosContext)
   return (
-    <Div_Container>
-      <>
-        <H1_Styled>todos</H1_Styled>
-        <TodoForm />
-        {logic.getFilteredTodos().map(todo => (
-          <Todo todo={todo} key={todo.id} />
-        ))}
-        <Div_Buttons>
-          <Button onClick={() => logic.setFilter('all')}>all</Button>
-          <Button onClick={() => logic.setFilter('active')}>active</Button>
-          <Button onClick={() => logic.setFilter('completed')}>completed</Button>
-        </Div_Buttons>
-      </>
-    </Div_Container>
+    <TodoContextProvider>
+      <TodoList />
+    </TodoContextProvider>
   )
 }
-const H1_Styled = styled.h1`
-  text-transform: uppercase;
-  color: ${styles.color.red};
-`
-
-const Div_Container = styled.div`
-  margin: 0 auto;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-const Div_Buttons = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`
