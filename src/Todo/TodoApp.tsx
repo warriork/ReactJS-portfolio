@@ -11,7 +11,7 @@ export type TodoType = {
 
 const useLogicState = () => {
   const [todos, setTodos] = useLocalStorage('todos', [] as TodoType[])
-  const [filter, setFilter] = useLocalStorage<'all' | 'active' | 'completed'>('filter', 'all')
+  const [filter, setFilter] = useLocalStorage('filter', 'all' as 'all' | 'active' | 'completed')
 
   const addTodo = (userInput: string) => {
     if (!userInput || removeRedundantSpacesRegExp.test(userInput)) return
@@ -32,16 +32,15 @@ const useLogicState = () => {
       todos.map(todo => (todo.id === id ? { ...todo, isComplete: !todo.isComplete } : { ...todo }))
     )
   }
-  const getFilteredTodos = () =>
-    todos.filter(todo =>
-      filter === 'all'
-        ? todo
-        : filter === 'completed' && todo.isComplete
-        ? todo
-        : filter === 'active' && !todo.isComplete
-        ? todo
-        : null
-    )
+  const filteredTodos = todos.filter(todo =>
+    filter === 'all'
+      ? todo
+      : filter === 'completed' && todo.isComplete
+      ? todo
+      : filter === 'active' && !todo.isComplete
+      ? todo
+      : null
+  )
   return {
     todos,
     setTodos,
@@ -50,7 +49,7 @@ const useLogicState = () => {
     addTodo,
     removeTodo,
     handleToggleTodo,
-    getFilteredTodos,
+    filteredTodos,
   }
 }
 

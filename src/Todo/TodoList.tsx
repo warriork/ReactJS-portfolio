@@ -16,7 +16,7 @@ export function TodoList() {
     <Div_Container>
       <H1_Styled>todos</H1_Styled>
       <TodoForm />
-      {logic.getFilteredTodos().map(todo => (
+      {logic.filteredTodos.map(todo => (
         <Todo todo={todo} key={todo.id} />
       ))}
       <Div_Buttons>
