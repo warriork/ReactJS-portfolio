@@ -1,17 +1,17 @@
+import { TodosContext } from './TodoApp'
 import { styles } from '../theme'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
-type addTodoType = { addTodo: (text: string) => void }
-
-export const TodoForm = (props: addTodoType) => {
+export const TodoForm = () => {
+  const logic = useContext(TodosContext)
   const [userInput, setUserInput] = useState('')
 
   return (
     <Form_Styled
       onSubmit={e => {
         e.preventDefault()
-        props.addTodo(userInput)
+        logic.addTodo(userInput)
         setUserInput('')
       }}
     >

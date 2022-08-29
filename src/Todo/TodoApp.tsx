@@ -1,12 +1,7 @@
-import { Button } from '../components/Button'
-import { Div_Wrapper } from '../components/Div_Wrapper'
-import { Link } from 'react-router-dom'
-import { Todo } from './Todo'
-import { TodoForm } from './TodoForm'
-import { generateID, useLocalStorage } from '../utils'
-import { styles } from '../theme'
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import { TodoList } from './TodoList'
+import { generateID, removeRedundantSpacesRegExp, useLocalStorage } from '../utils/helperFunctions'
+import { genericHookContextBuilder } from '../utils/createCustomContextHook'
+import React, { useContext, useState } from 'react'
 
 export type TodoType = {
   id: number
@@ -14,12 +9,12 @@ export type TodoType = {
   isComplete: boolean
 }
 
-export const TodoApp = () => {
+const useLogicState = () => {
   const [todos, setTodos] = useLocalStorage('todos', [] as TodoType[])
-  const [filter, setFilter] = useLocalStorage<'all' | 'active' | 'completed'>('filter', 'all')
+  const [filter, setFilter] = useLocalStorage('filter', 'all' as 'all' | 'active' | 'completed')
 
   const addTodo = (userInput: string) => {
-    if (!userInput) return
+    if (!userInput || removeRedundantSpacesRegExp.test(userInput)) return
     setTodos([
       {
         id: generateID(),
@@ -30,55 +25,42 @@ export const TodoApp = () => {
     ])
   }
 
-  const removeTodo = (id: number) => setTodos(todos.filter(todo => todo.id !== id))
+  const removeTodo = (id: TodoType['id']) => setTodos(todos.filter(todo => todo.id !== id))
 
-  const handleToggle = (id: number) => {
+  const handleToggleTodo = (id: TodoType['id']): void => {
     setTodos(
       todos.map(todo => (todo.id === id ? { ...todo, isComplete: !todo.isComplete } : { ...todo }))
     )
   }
+  const filteredTodos = todos.filter(todo =>
+    filter === 'all'
+      ? todo
+      : filter === 'completed' && todo.isComplete
+      ? todo
+      : filter === 'active' && !todo.isComplete
+      ? todo
+      : null
+  )
+  return {
+    todos,
+    setTodos,
+    filter,
+    setFilter,
+    addTodo,
+    removeTodo,
+    handleToggleTodo,
+    filteredTodos,
+  }
+}
 
+export const { ContextProvider: TodoContextProvider, Context: TodosContext } =
+  genericHookContextBuilder(useLogicState)
+
+export const TodoApp = () => {
+  const logic = useContext(TodosContext)
   return (
-    <Div_Container>
-      <>
-        <H1_Styled>todos</H1_Styled>
-        <TodoForm addTodo={addTodo} />
-        {todos
-          .filter(todo => {
-            return filter === 'all'
-              ? todo
-              : filter === 'completed' && todo.isComplete
-              ? todo
-              : filter === 'active' && !todo.isComplete
-              ? todo
-              : null
-          })
-          .map(todo => (
-            <Todo todo={todo} key={todo.id} toggleTodo={handleToggle} removeTodo={removeTodo} />
-          ))}
-        <Div_Buttons>
-          <Button onClick={() => setFilter('all')}>all</Button>
-          <Button onClick={() => setFilter('active')}>active</Button>
-          <Button onClick={() => setFilter('completed')}>completed</Button>
-        </Div_Buttons>
-      </>
-    </Div_Container>
+    <TodoContextProvider>
+      <TodoList />
+    </TodoContextProvider>
   )
 }
-const H1_Styled = styled.h1`
-  text-transform: uppercase;
-  color: ${styles.color.red};
-`
-
-const Div_Container = styled.div`
-  margin: 0 auto;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-const Div_Buttons = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`
