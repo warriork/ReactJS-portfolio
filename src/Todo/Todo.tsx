@@ -44,7 +44,7 @@ const Div_Delete = styled.div`
   padding: 0 10px;
   color: ${styles.color.red};
   width: 35px;
-
+  border: 2px solid ${styles.color.white};
   cursor: pointer;
   &:hover {
     border: 2px solid ${styles.color.grey};

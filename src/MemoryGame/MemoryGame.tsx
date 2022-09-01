@@ -1,4 +1,5 @@
 import { Div_Wrapper } from '../components/Div_Wrapper'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { SingleCard } from './SingleCard'
 import { StringDecoder } from 'string_decoder'
@@ -11,13 +12,14 @@ import React, { useEffect, useState } from 'react'
 import bg_game from '../assets/bg_game.jpg'
 import cardCover from '../assets/cards/cover.png'
 import styled from 'styled-components'
+
 export type Card = {
   id: number
   img: string
   isMatched: boolean
 }
 type Turns = {
-  show: boolean
+  isGameStarted: boolean
 }
 
 const getShuffledCards = (cards: string[]): Card[] => {
@@ -66,7 +68,11 @@ export const MemoryGame = () => {
 
   return (
     <Div_Wrapp>
-      <h1>Memory game</h1>
+      <Helmet>
+        <title>Pexeso</title>
+      </Helmet>
+      <H1_Styled isGameStarted={turns > 0}>Memory game</H1_Styled>
+      <Turns_P isGameStarted={turns > 0}>Turns: {turns}</Turns_P>
       <Button
         onClick={() => {
           setCardsBoard(getShuffledCards(cards))
@@ -86,7 +92,6 @@ export const MemoryGame = () => {
           />
         ))}
       </Div_Gameboard>
-      <Turns_P show={turns > 0}>Turns: {turns}</Turns_P>
     </Div_Wrapp>
   )
 }
@@ -97,6 +102,12 @@ const Div_Wrapp = styled(Div_Wrapper)`
   background-repeat: no-repeat;
   background-position: center;
 `
+const H1_Styled = styled.h1<Turns>`
+  display: ${props => (props.isGameStarted ? 'none' : 'block')};
+  color: ${styles.color.white};
+  text-shadow: 5px 5px 8px ${styles.color.black};
+  margin-bottom: 20px;
+`
 const Div_Gameboard = styled.div`
   margin-top: 10px;
   display: grid;
@@ -106,22 +117,30 @@ const Div_Gameboard = styled.div`
 `
 const Button = styled.button`
   background: none;
-  backdrop-filter: blur(5px);
-  padding: 5px 10px;
-  border: 2px solid ${styles.color.black};
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: 2px solid ${styles.color.white};
   border-radius: 10px;
   font-weight: 700;
+  color: ${styles.color.white};
+  text-shadow: 5px 5px 8px ${styles.color.black};
   cursor: pointer;
+  transition: 0.2s ease-in-out;
+
   &:active {
     transform: translate(0, 2px);
   }
-  transition: 0.15s;
+
+  &:hover {
+    background-color: ${styles.color.layout};
+  }
 `
 const Turns_P = styled.p<Turns>`
-  display: ${props => (props.show ? 'block' : 'none')};
-  font-weight: 700;
-  backdrop-filter: blur(5px);
-  padding: 10px 15px;
-  border: 1px solid ${styles.color.black};
-  border-radius: 5px;
+  display: ${props => (props.isGameStarted ? 'block' : 'none')};
+  color: ${styles.color.white};
+  font-size: 2em;
+  text-shadow: 5px 5px 8px ${styles.color.black};
+  margin-bottom: 20px;
+  font-weight: 900;
 `

@@ -1,4 +1,5 @@
 import { Div_Wrapper } from '../components/Div_Wrapper'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { StringDecoder } from 'string_decoder'
 import { access } from 'fs/promises'
@@ -11,12 +12,15 @@ type Access = 'denied' | 'granted' | null
 
 export const HackerTyper = () => {
   const [pointerIndex, setPointerIndex] = useState(0)
-  const [accessMsg, setAccessMsg] = useState<Access>(null)
+  const [accessMsg, setAccessMsg] = useState(null as 'denied' | 'granted' | null)
 
   const welcomeMsg = `To begin, start typing on your keyboard and your hacker code will immediately appear.To enhance your experience, press Shift or Enter`
 
   return (
     <Div_Wrapper>
+      <Helmet>
+        <title>Counter App</title>
+      </Helmet>
       <Textarea_Styled
         spellCheck={false}
         autoFocus={true}
@@ -51,6 +55,9 @@ const Textarea_Styled = styled.textarea`
   line-height: 1.2rem;
   padding: 10px;
   overflow: hidden;
+  @media (max-width: ${styles.breakingPoints.s}) {
+    line-height: 1rem;
+  }
 `
 const Div_Banner = styled.div<{ access: Access }>`
   display: ${props => (props.access ? 'flex' : 'none')};

@@ -34,6 +34,7 @@ const H1_Styled = styled.h1`
 `
 
 const Div_Container = styled.div`
+  height: calc(100vh - 80px);
   margin: 0 auto;
   padding-top: 20px;
   display: flex;

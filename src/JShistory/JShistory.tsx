@@ -1,13 +1,17 @@
-import { Link_Styled } from '../components/Link_Styled'
+import { Helmet } from 'react-helmet'
 import { styles } from '../theme'
 import { urls } from '../urls'
 import React from 'react'
 import historyLogo from './history.png'
 import jsLogo from './jsLogo.png'
 import styled from 'styled-components'
+
 export const JShistory = () => {
   return (
     <>
+      <Helmet>
+        <title>JS history</title>
+      </Helmet>
       <Section_Styled>
         <H1_Styled> Javascript history</H1_Styled>
         <Paragraph_Styled>
@@ -20,7 +24,7 @@ export const JShistory = () => {
       </Section_Styled>
       <Section_Styled>
         <H2_Styled> Timeline of a JS development</H2_Styled>
-        <table>
+        <Table_Styled>
           <thead>
             <Tr_Styled>
               <Th_Styled>Year</Th_Styled>
@@ -150,7 +154,7 @@ export const JShistory = () => {
               </Td_Styled>
             </Tr_Styled>
           </tbody>
-        </table>
+        </Table_Styled>
       </Section_Styled>
     </>
   )
@@ -186,9 +190,13 @@ const H2_Styled = styled.h2`
   }
 `
 const Paragraph_Styled = styled.p`
+  text-align: justify;
   padding: 10px 20px;
-  max-width: 940px;
+  max-width: 552px;
   line-height: 1.5;
+`
+const Table_Styled = styled.table`
+  max-width: calc(100% - 40px);
 `
 const Th_Styled = styled.th`
   font-weight: bold;
@@ -202,4 +210,12 @@ const Tr_Styled = styled.tr`
   &:nth-of-type(2n) td {
     background-color: ${styles.color.grey};
   }
+`
+
+export const Link_Styled = styled.a`
+  text-decoration: none;
+  color: ${styles.color.black};
+  font-style: italic;
+  font-weight: bold;
+  cursor: pointer;
 `
