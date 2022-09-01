@@ -1,6 +1,6 @@
 import { Burger } from './Burger'
-import { Link, Outlet } from 'react-router-dom'
 import { Link_Styled } from '../Link_Styled'
+import { NavLink, Outlet } from 'react-router-dom'
 import { styles } from '../../theme'
 import { urls } from '../../urls'
 import React, { useState } from 'react'
@@ -12,66 +12,31 @@ type Props = {
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const handleClick = () => {
-    setIsOpen(!isOpen)
+    setIsOpen(prevState => !prevState)
   }
   return (
     <>
       <Burger isOpen={isOpen} onClick={handleClick} />
       <Nav_Styled isOpen={isOpen}>
-        <Link_Router
-          onClick={() => {
-            setIsOpen(false)
-          }}
-          to={urls.homepage}
-        >
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.homepage}>
           Home
         </Link_Router>
-        <Link_Router
-          onClick={() => {
-            setIsOpen(false)
-          }}
-          to={urls.jsHistory}
-        >
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.jsHistory}>
           JavaScript history
         </Link_Router>
-        <Link_Router
-          onClick={() => {
-            setIsOpen(false)
-          }}
-          to={urls.counterApp}
-        >
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.counterApp}>
           Counter app
         </Link_Router>
-        <Link_Router
-          onClick={() => {
-            setIsOpen(false)
-          }}
-          to={urls.todoApp}
-        >
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.todoApp}>
           Todo app
         </Link_Router>
-        <Link_Router
-          onClick={() => {
-            setIsOpen(false)
-          }}
-          to={urls.mortgageCalculator}
-        >
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.mortgageCalculator}>
           Mortgage calculator
         </Link_Router>
-        <Link_Router
-          onClick={() => {
-            setIsOpen(false)
-          }}
-          to={urls.hackerTyper}
-        >
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.hackerTyper}>
           Hacker Typer
         </Link_Router>
-        <Link_Router
-          onClick={() => {
-            setIsOpen(false)
-          }}
-          to={urls.memoryGame}
-        >
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.memoryGame}>
           Memory game
         </Link_Router>
       </Nav_Styled>
@@ -104,7 +69,7 @@ const Nav_Styled = styled.nav<Props>`
     border: none;
   }
 `
-const Link_Router = styled(Link)`
+const Link_Router = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,6 +80,7 @@ const Link_Router = styled(Link)`
   padding: 0 20px;
   background: none;
   transition: 0.5s ease-in-out;
+  background: ${props => (props.className === 'active' ? styles.color.layoutActive : 'none')};
   &:hover {
     background: ${styles.color.layoutActive};
   }

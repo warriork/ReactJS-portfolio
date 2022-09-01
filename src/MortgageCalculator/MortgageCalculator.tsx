@@ -2,16 +2,10 @@ import { Button } from '../components/Button'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { calcMortgage } from './calcMortgageFunc'
 import { styles } from '../theme'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-
-const calcMortgage = (rate: number, period: number, price: number, firstPayment: number) => {
-  return Math.round(
-    ((((price - firstPayment) * rate) / 100 / 12) * (1 + rate / 100 / 12) ** (12 * period)) /
-      ((1 + rate / 100 / 12) ** (12 * period) - 1)
-  )
-}
 
 export const MortgageCalculator = () => {
   const [period, setPeriod] = useState(10)
@@ -117,8 +111,9 @@ export const MortgageCalculator = () => {
       </form>
       <div>
         <H2_Styled>
-          Your monthly payment is <span>{calcMortgage(rate, period, price, firstPayment)}</span> kč
-          for <span>{period}</span> years
+          Your monthly payment is{' '}
+          <span>{Math.round(calcMortgage(rate, period, price, firstPayment))}</span> kč for{' '}
+          <span>{period}</span> years
         </H2_Styled>
       </div>
     </Div_Container>
