@@ -112,7 +112,7 @@ export const MortgageCalculator = () => {
       <div>
         <H2_Styled>
           Your monthly payment is{' '}
-          <span>{Math.round(calcMortgage(rate, period, price, firstPayment))}</span> kč for{' '}
+          <span>{Math.round(calcMortgage({ rate, period, price, firstPayment }))}</span> kč for{' '}
           <span>{period}</span> years
         </H2_Styled>
       </div>
