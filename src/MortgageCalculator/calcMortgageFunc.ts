@@ -1,6 +1,9 @@
 export const calcMortgage = (rate: number, period: number, price: number, firstPayment: number) => {
+  const restToPay = price - firstPayment
+  const monthlyRate = rate / 100 / 12
+  const monthTotal = period * 12
   return (
-    ((((price - firstPayment) * rate) / 100 / 12) * (1 + rate / 100 / 12) ** (12 * period)) /
-    ((1 + rate / 100 / 12) ** (12 * period) - 1)
+    (restToPay * monthlyRate * (1 + monthlyRate) ** monthTotal) /
+    (1 + monthlyRate) ** (monthTotal - 1)
   )
 }
