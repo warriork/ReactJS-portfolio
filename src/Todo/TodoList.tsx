@@ -1,4 +1,3 @@
-import { Button } from '../components/Button'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
 import { Todo } from './Todo'
@@ -20,9 +19,15 @@ export function TodoList() {
         <Todo todo={todo} key={todo.id} />
       ))}
       <Div_Buttons>
-        <Button onClick={() => logic.setFilter('all')}>all</Button>
-        <Button onClick={() => logic.setFilter('active')}>active</Button>
-        <Button onClick={() => logic.setFilter('completed')}>completed</Button>
+        <Button onClick={() => logic.setFilter('all')} filter={logic.filter}>
+          all
+        </Button>
+        <Button onClick={() => logic.setFilter('active')} filter={logic.filter}>
+          active
+        </Button>
+        <Button onClick={() => logic.setFilter('completed')} filter={logic.filter}>
+          completed
+        </Button>
       </Div_Buttons>
     </Div_Container>
   )
@@ -34,6 +39,7 @@ const H1_Styled = styled.h1`
 `
 
 const Div_Container = styled.div`
+  height: calc(100vh - 80px);
   margin: 0 auto;
   padding-top: 20px;
   display: flex;
@@ -44,4 +50,24 @@ const Div_Container = styled.div`
 const Div_Buttons = styled.div`
   display: flex;
   justify-content: space-evenly;
+`
+type Filter = {
+  filter: 'all' | 'active' | 'completed'
+  onClick?: () => void
+}
+const Button = styled.button<Filter>`
+  padding: 2px 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:active {
+    transform: translate(0, 2px);
+  }
+  transition: 0.2s;
+  &:nth-child(${props => (props.filter === 'all' ? '1' : props.filter === 'active' ? '2' : '3')}) {
+    font-weight: 900;
+    color: ${styles.color.layout};
+    border: 2px solid ${styles.color.layout};
+    border-radius: 10px;
+  }
 `

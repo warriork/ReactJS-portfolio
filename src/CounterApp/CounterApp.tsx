@@ -1,4 +1,5 @@
 import { Div_Wrapper } from '../components/Div_Wrapper'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { styles } from '../theme'
 import React from 'react'
@@ -23,6 +24,9 @@ class CounterApp extends React.Component<Props, State> {
   render() {
     return (
       <Div_Wrapper>
+        <Helmet>
+          <title>Counter App</title>
+        </Helmet>
         <Div_Calculator>
           <H1_Counter>{this.state.counter}</H1_Counter>
           <div>
@@ -57,13 +61,14 @@ const Div_Calculator = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: black;
+  border: 2px solid ${styles.color.black};
+  background: ${styles.color.darkBlue};
 `
 const H1_Counter = styled.h1`
   text-align: center;
   width: 105px;
   background: ${styles.color.lightblue};
-  border: 2px solid black;
+  border: 2px solid ${styles.color.black};
   border-radius: 10px;
   margin-bottom: 10px;
 `

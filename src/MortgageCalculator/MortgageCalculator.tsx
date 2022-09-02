@@ -1,16 +1,11 @@
 import { Button } from '../components/Button'
 import { Div_Wrapper } from '../components/Div_Wrapper'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { calcMortgage } from './calcMortgageFunc'
 import { styles } from '../theme'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-
-const calcMortgage = (rate: number, period: number, price: number, firstPayment: number) => {
-  return (
-    ((((price - firstPayment) * rate) / 100 / 12) * (1 + rate / 100 / 12) ** (12 * period)) /
-    ((1 + rate / 100 / 12) ** (12 * period) - 1)
-  )
-}
 
 export const MortgageCalculator = () => {
   const [period, setPeriod] = useState(10)
@@ -20,6 +15,9 @@ export const MortgageCalculator = () => {
 
   return (
     <Div_Container>
+      <Helmet>
+        <title>Motrage Calculator</title>
+      </Helmet>
       <h1>Mortage calculator</h1>
       <form>
         <div>
@@ -111,11 +109,13 @@ export const MortgageCalculator = () => {
           />
         </div>
       </form>
-      <h2>
-        Your monthly payment is{' '}
-        <Span_Styled>{Math.round(calcMortgage(rate, period, price, firstPayment))}</Span_Styled> kč
-        for <Span_Styled>{period}</Span_Styled> years
-      </h2>
+      <div>
+        <H2_Styled>
+          Your monthly payment is{' '}
+          <span>{Math.round(calcMortgage({ rate, period, price, firstPayment }))}</span> kč for{' '}
+          <span>{period}</span> years
+        </H2_Styled>
+      </div>
     </Div_Container>
   )
 }
@@ -134,6 +134,7 @@ const Input_Number = styled.input.attrs({ type: 'number' })`
   width: 100%;
   font-size: 1rem;
   line-height: 1.5rem;
+  border-radius: 5px;
   padding: 0 10px;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
@@ -146,6 +147,9 @@ const Input_Range = styled.input.attrs({ type: 'range' })`
   width: 100%;
   padding: 10px 0;
 `
-const Span_Styled = styled.span`
-  color: ${styles.color.blue};
+const H2_Styled = styled.h2`
+  text-align: center;
+  &:span {
+    color: ${styles.color.red};
+  }
 `

@@ -1,6 +1,5 @@
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
-import { Link_Styled } from '../components/Link_Styled'
 import { styles } from '../theme'
 import { urls } from '../urls'
 import React from 'react'
@@ -17,3 +16,12 @@ export const Homepage = () => {
     </Div_Wrapper>
   )
 }
+
+const Link_Styled = styled.a`
+  font-style: italic;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+  color: ${styles.color.fontDark};
+  transition: 0.2s;
+`
