@@ -39,6 +39,9 @@ export const Navbar = () => {
         <Link_Router onClick={() => setIsOpen(false)} to={urls.memoryGame}>
           Memory game
         </Link_Router>
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.httpFilter}>
+          Memory game
+        </Link_Router>
       </Nav_Styled>
     </>
   )
