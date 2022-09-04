@@ -11,4 +11,7 @@ export const urls = {
   hackerTyper: '/hacker-typer',
   memoryGame: '/memory-game',
   httpFilter: '/http-filter',
+} as const
+export const filterUrl = (value: string) => {
+  return `${process.env.REACT_APP_URL}?search=${value}`
 }

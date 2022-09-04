@@ -5,6 +5,7 @@ import { styles } from '../../theme'
 import { urls } from '../../urls'
 import React, { useState } from 'react'
 import styled from 'styled-components'
+
 type Props = {
   isOpen: boolean
   onClick?: () => void
@@ -40,7 +41,7 @@ export const Navbar = () => {
           Memory game
         </Link_Router>
         <Link_Router onClick={() => setIsOpen(false)} to={urls.httpFilter}>
-          Memory game
+          HTTP request
         </Link_Router>
       </Nav_Styled>
     </>
