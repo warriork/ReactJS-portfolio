@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet'
-import { filterUrl } from '../urls'
+import { apiRequests } from '../urls'
 import { isConstructorDeclaration } from 'typescript'
 import { styles } from '../theme'
 import React, { useState } from 'react'
@@ -17,7 +17,7 @@ export const HttpFilterApp = () => {
     setIsLoading(true)
     try {
       setIsLoading(true)
-      const response = await fetch(filterUrl(e.target.value))
+      const response = await fetch(apiRequests.filter(e.target.value))
       if (!response.ok) throw Error
       setData(await response.json())
     } catch (err) {

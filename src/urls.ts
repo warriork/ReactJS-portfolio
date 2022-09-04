@@ -12,6 +12,6 @@ export const urls = {
   memoryGame: '/memory-game',
   httpFilter: '/http-filter',
 } as const
-export const filterUrl = (value: string) => {
-  return `${process.env.REACT_APP_URL}?search=${value}`
+export const apiRequests = {
+  filter: (value: string) => `${process.env.REACT_APP_URL}?search=${value}`,
 }
