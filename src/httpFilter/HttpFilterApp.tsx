@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet'
-import { apiRequests } from '../urls'
+import { apiRequests } from '../utils/serviceLayer'
 import { isConstructorDeclaration } from 'typescript'
 import { styles } from '../theme'
 import React, { useState } from 'react'
@@ -16,8 +16,7 @@ export const HttpFilterApp = () => {
     setError(null)
     setIsLoading(true)
     try {
-      setIsLoading(true)
-      const response = await fetch(apiRequests.filter(e.target.value))
+      const response = await apiRequests.filterUsers(e.target.value)
       if (!response.ok) throw Error
       setData(await response.json())
     } catch (err) {
@@ -33,7 +32,7 @@ export const HttpFilterApp = () => {
       </Helmet>
 
       <h1>HTTP filter search</h1>
-      <Input_Styled type='text' onChange={handleChange} placeholder='Enter a name'></Input_Styled>
+      <Input_Styled type='text' onChange={handleChange} placeholder='Enter a name' />
       <DataList>
         {isLoading ? (
           <P_Styled>Loading</P_Styled>

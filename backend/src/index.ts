@@ -6,20 +6,32 @@ const app = express()
 const port = 1234
 
 app.use(cors())
+type Users = {
+  users: User[]
+}
 type User = {
   id: string
   name: string
 }
-const formatValue = (inputValue: string) =>
-  inputValue.toLowerCase().trim().replace(/ +/g, '').replace(/[y]/g, 'i')
+
+const getUnifiedValue = (searchedValue: string) =>
+  searchedValue.toLowerCase().trim().replace(/ +/g, '').replace(/[y]/g, 'i')
+
+const readDataFromJSON = <T>(fileName: string): T => {
+  const dataString = fs.readFileSync(`${__dirname}/../${fileName}.json`, 'utf-8')
+  return JSON.parse(dataString)
+}
+const writeDataToJSON = <T>(fileName: string, data: T) => {
+  fs.writeFileSync(`${__dirname}/../${fileName}.json`, JSON.stringify(data))
+}
 
 app.get('/', (req, res, next) => {
   try {
-    const dataString = fs.readFileSync(`${__dirname}/../data.json`, 'utf-8')
-    const data = JSON.parse(dataString).users as User[]
+    const data = <Users>readDataFromJSON('data')
+    console.log(data)
     res.send(
-      data.filter(item =>
-        formatValue(item.name).includes(formatValue(req.query.search!.toString()))
+      data.users.filter(item =>
+        getUnifiedValue(item.name).includes(getUnifiedValue(req.query.search!.toString()))
       )
     )
   } catch (err) {
