@@ -17,7 +17,7 @@ export const HttpFilterApp = () => {
     setIsLoading(true)
     try {
       const response = await apiRequests.filterUsers(e.target.value)
-      if (!response.ok) throw Error
+      if (!response.ok) throw new Error('response error')
       setData(await response.json())
     } catch (err) {
       setError('Server side error')

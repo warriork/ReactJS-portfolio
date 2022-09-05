@@ -17,17 +17,17 @@ type User = {
 const getUnifiedValue = (searchedValue: string) =>
   searchedValue.toLowerCase().trim().replace(/ +/g, '').replace(/[y]/g, 'i')
 
-const readDataFromJSON = <T>(fileName: string): T => {
+const readDataFromJSON = (fileName: string): Users => {
   const dataString = fs.readFileSync(`${__dirname}/../${fileName}.json`, 'utf-8')
   return JSON.parse(dataString)
 }
-const writeDataToJSON = <T>(fileName: string, data: T) => {
+const writeDataToJSON = (fileName: string, data: Users) => {
   fs.writeFileSync(`${__dirname}/../${fileName}.json`, JSON.stringify(data))
 }
 
 app.get('/', (req, res, next) => {
   try {
-    const data = <Users>readDataFromJSON('data')
+    const data = readDataFromJSON('data')
     console.log(data)
     res.send(
       data.users.filter(item =>
