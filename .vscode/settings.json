@@ -27,5 +27,14 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
+    "cSpell.words": [
+        "Bazoš",
+        "Cena",
+        "inzerátu",
+        "název",
+        "pořadí",
+        "Vytvořit",
+        "změň"
+    ],
     "files.eol": "\n",
 }

@@ -10,4 +10,5 @@ export const urls = {
   mortgageCalculator: '/mortgage-calculator',
   hackerTyper: '/hacker-typer',
   memoryGame: '/memory-game',
-}
+  httpFilter: '/http-filter',
+} as const

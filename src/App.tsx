@@ -1,6 +1,7 @@
 import { CounterApp } from './CounterApp/CounterApp'
 import { HackerTyper } from './hacker-typer/HackerTyper'
 import { Homepage } from './Homepage/Homepage'
+import { HttpFilterApp } from './httpFilter/HttpFilterApp'
 import { JShistory } from './JShistory/JShistory'
 import { Layout } from './Layout'
 import { Link, Route, Routes } from 'react-router-dom'
@@ -24,6 +25,7 @@ export const App = () => {
           <Route path={urls.mortgageCalculator} element={<MortgageCalculator />} />
           <Route path={urls.hackerTyper} element={<HackerTyper />} />
           <Route path={urls.memoryGame} element={<MemoryGame />} />
+          <Route path={urls.httpFilter} element={<HttpFilterApp />} />
         </Route>
       </Routes>
     </>
