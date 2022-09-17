@@ -11,4 +11,7 @@ export const urls = {
   hackerTyper: '/hacker-typer',
   memoryGame: '/memory-game',
   httpFilter: '/http-filter',
+  blogApp: '/blog',
+  createArticle: '/new-article',
+  articleDetail: '/article',
 } as const

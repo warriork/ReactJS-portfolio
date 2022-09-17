@@ -7,7 +7,6 @@ export const Div_Wrapper = styled.div`
   min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background: ${styles.color.main};
   @media (max-width: ${styles.breakingPoints.s}) {

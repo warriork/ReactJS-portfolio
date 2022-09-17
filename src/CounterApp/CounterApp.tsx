@@ -1,4 +1,3 @@
-import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { styles } from '../theme'
@@ -50,6 +49,19 @@ class CounterApp extends React.Component<Props, State> {
     )
   }
 }
+
+export const Div_Wrapper = styled.div`
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: ${styles.color.main};
+  @media (max-width: ${styles.breakingPoints.s}) {
+    min-height: calc(100vh-40px);
+  }
+`
 
 const Div_Calculator = styled.div`
   margin: 0 auto;

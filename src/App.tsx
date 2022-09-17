@@ -1,3 +1,4 @@
+import { BlogApp } from './blogApp/BlogApp'
 import { CounterApp } from './CounterApp/CounterApp'
 import { HackerTyper } from './hacker-typer/HackerTyper'
 import { Homepage } from './Homepage/Homepage'
@@ -26,6 +27,7 @@ export const App = () => {
           <Route path={urls.hackerTyper} element={<HackerTyper />} />
           <Route path={urls.memoryGame} element={<MemoryGame />} />
           <Route path={urls.httpFilter} element={<HttpFilterApp />} />
+          <Route path={urls.blogApp} element={<BlogApp />} />
         </Route>
       </Routes>
     </>
