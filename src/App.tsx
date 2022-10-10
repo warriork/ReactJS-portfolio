@@ -27,7 +27,7 @@ export const App = () => {
           <Route path={urls.hackerTyper} element={<HackerTyper />} />
           <Route path={urls.memoryGame} element={<MemoryGame />} />
           <Route path={urls.httpFilter} element={<HttpFilterApp />} />
-          <Route path={urls.blogApp} element={<BlogApp />} />
+          <Route path={urls.blogAppWithNestedChildren} element={<BlogApp />} />
         </Route>
       </Routes>
     </>
