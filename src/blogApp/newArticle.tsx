@@ -1,5 +1,4 @@
 import { BlogContext } from './BlogAppContextProvider'
-import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Helmet } from 'react-helmet'
 import { slugify } from '../utils/slugify'
 import { urls } from '../urls'
@@ -49,7 +48,7 @@ export const NewArticle = () => {
         <title>New Article</title>
       </Helmet>
       <Div_Wrapper>
-        <h1>New Article</h1>
+        <H2_Styled>New Article</H2_Styled>
         <CreateArticle
           onSubmit={e => {
             e.preventDefault()
@@ -84,6 +83,16 @@ export const NewArticle = () => {
   )
 }
 
+const Div_Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const H2_Styled = styled.h2`
+  line-height: 35px;
+`
 const CreateArticle = styled.form`
   display: flex;
   flex-direction: column;
@@ -95,4 +104,7 @@ const Submit_Btn = styled.button`
   border-radius: 10px;
   cursor: pointer;
 `
-const ValidationError_Div = styled.div``
+const ValidationError_Div = styled.div`
+  color: red;
+  line-height: 30px;
+`

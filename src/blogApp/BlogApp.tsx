@@ -13,12 +13,12 @@ import styled from 'styled-components'
 
 export const BlogApp = () => {
   return (
-    <Div_Wrapper>
-      <BlogContextProvider>
-        <Helmet>
-          <title>Blog app</title>
-        </Helmet>
-        <h1>Blog</h1>
+    <BlogContextProvider>
+      <Helmet>
+        <title>Blog app</title>
+      </Helmet>
+      <Div_Wrapper>
+        <H1_Styled>Blog</H1_Styled>
         <Navbar_Styled>
           <Link_Router to={urls.blogApp}>Articles</Link_Router>
           <Link_Router to={newArticleUrl}>New Article</Link_Router>
@@ -28,22 +28,29 @@ export const BlogApp = () => {
           <Route path={urls.createArticle} element={<NewArticle />} />
           <Route path={articleDetailUrl} element={<ArticleDetail />} />
         </Routes>
-      </BlogContextProvider>
-    </Div_Wrapper>
+      </Div_Wrapper>
+    </BlogContextProvider>
   )
 }
 
+const H1_Styled = styled.h1`
+  line-height: 50px;
+`
 const Navbar_Styled = styled.nav`
   display: flex;
   flex-direction: row;
 `
-const Link_Router = styled(Link)`
+const Link_Router = styled(NavLink)`
+  display: block;
+  width: 160px;
   text-decoration: none;
+  text-align: center;
+  line-height: 40px;
   cursor: pointer;
-  height: 40px;
+  font-size: 22px;
   padding: 0 20px;
   background: none;
   color: ${styles.color.black};
   transition: 0.5s ease-in-out;
-  background-color: ${props => (props.className === 'active' ? styles.color.layoutActive : 'none')};
+  color: ${props => (props.className === 'active' ? styles.color.layoutActive : 'black')};
 `
