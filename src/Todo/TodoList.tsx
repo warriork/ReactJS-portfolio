@@ -1,4 +1,3 @@
-import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
 import { Todo } from './Todo'
 import { TodoForm } from './TodoForm'
@@ -9,7 +8,7 @@ import { styles } from '../theme'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
-export function TodoList() {
+export const TodoList = () => {
   const logic = useContext(TodosContext)
   return (
     <Div_Container>
@@ -41,10 +40,10 @@ const H1_Styled = styled.h1`
 const Div_Container = styled.div`
   height: calc(100vh - 80px);
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 `
 const Div_Buttons = styled.div`

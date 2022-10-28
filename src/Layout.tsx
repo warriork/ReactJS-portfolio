@@ -10,25 +10,16 @@ import styled from 'styled-components'
 export const Layout = () => {
   return (
     <div>
-      {/* <Div_HeaderContainer>
-        <Link_Router to={urls.homepage}>Home</Link_Router>
-        <Link_Router to={urls.jsHistory}>JavaScript history</Link_Router>
-        <Link_Router to={urls.counterApp}>Counter app</Link_Router>
-        <Link_Router to={urls.todoApp}>Todo app</Link_Router>
-        <Link_Router to={urls.mortgageCalculator}>Mortgage calculator</Link_Router>
-        <Link_Router to={urls.hackerTyper}>Hacker Typer</Link_Router>
-        <Link_Router to={urls.memoryGame}>Memory game</Link_Router>
-      </Div_HeaderContainer> */}
       <Navbar />
       <Div_Wrapper>
         <Outlet />
       </Div_Wrapper>
-      <Footer_Container>
+      {/* <Footer_Container>
         <Paragraph_Styled>
-          Made by <Link_Styled href={urls.warriorkGitLab}>Ihor Fesina</Link_Styled>, a student of a{' '}
+          Made by <Link_Styled href={urls.warriorkGitLab}>Ihor Fesina</Link_Styled>
           <Link_Styled href={urls.itAbsolvent}>IT absolvent</Link_Styled>
         </Paragraph_Styled>
-      </Footer_Container>
+      </Footer_Container> */}
     </div>
   )
 }

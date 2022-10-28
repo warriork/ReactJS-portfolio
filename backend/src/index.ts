@@ -45,5 +45,5 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
   res.json(err)
 })
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app is listening on port ${port}`)
 })

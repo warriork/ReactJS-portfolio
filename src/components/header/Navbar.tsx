@@ -43,6 +43,9 @@ export const Navbar = () => {
         <Link_Router onClick={() => setIsOpen(false)} to={urls.httpFilter}>
           HTTP request
         </Link_Router>
+        <Link_Router onClick={() => setIsOpen(false)} to={urls.blogApp}>
+          Blog
+        </Link_Router>
       </Nav_Styled>
     </>
   )
