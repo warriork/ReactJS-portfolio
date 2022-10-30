@@ -25,11 +25,16 @@ const useLogicState = () => {
       ...articles,
     ])
   }
+  const removeArticleData = (DeletedArticleId: string | number) => {
+    const newArticlesList = articles.filter(article => article.id !== DeletedArticleId)
+    setArticles(newArticlesList)
+  }
 
   return {
     articles,
     setArticles,
     addArticleData,
+    removeArticleData,
   }
 }
 

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 export const Div_Wrapper = styled.div`
   width: 100%;
-  padding-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;

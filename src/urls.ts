@@ -1,10 +1,15 @@
 import { slugify } from './utils/slugify'
 export const urls = {
   bredanEich: 'https://wikipedia.org/wiki/Brendan_Eich',
-  warriorkGitLab: 'https://gitlab.com/warriork',
+  myGitLab: 'https://gitlab.com/warriork',
+  myGithub: 'https://github.com/warriork',
+  myMail: 'mailto:fesinaihor@gmail.com',
+  myLinkedin: '',
   itAbsolvent: 'https://www.it-absolvent.cz',
   layout: '/',
   homepage: '/',
+  pfizerPrize:
+    'https://www.pfizer.cz/news/spole%C4%8Dnost-pfizer-op%C4%9Bt-ocenila-nadan%C3%A9-studenty',
   jsHistory: '/js-history',
   counterApp: '/counter-app',
   todoApp: '/todo',
@@ -14,7 +19,7 @@ export const urls = {
   httpFilter: '/http-filter',
   blogApp: '/blog',
   blogAppWithNestedChildren: '/blog/*',
-  createArticle: `/new-article`,
+  createArticle: '/new-article',
   articleDetail: '/articles/',
   slug: ':slug',
 } as const
