@@ -14,9 +14,6 @@ export const TodoList = () => {
     <Div_Container>
       <H1_Styled>todos</H1_Styled>
       <TodoForm />
-      {logic.filteredTodos.map(todo => (
-        <Todo todo={todo} key={todo.id} />
-      ))}
       <Div_Buttons>
         <Button onClick={() => logic.setFilter('all')} filter={logic.filter}>
           all
@@ -28,6 +25,9 @@ export const TodoList = () => {
           completed
         </Button>
       </Div_Buttons>
+      {logic.filteredTodos.map(todo => (
+        <Todo todo={todo} key={todo.id} />
+      ))}
     </Div_Container>
   )
 }
@@ -49,7 +49,10 @@ const Div_Container = styled.div`
 const Div_Buttons = styled.div`
   display: flex;
   justify-content: space-evenly;
+  height: 25px;
+  align-items: center;
 `
+
 type Filter = {
   filter: 'all' | 'active' | 'completed'
   onClick?: () => void
@@ -59,9 +62,9 @@ const Button = styled.button<Filter>`
   background: none;
   border: none;
   cursor: pointer;
-  &:active {
+  /* &:active {
     transform: translate(0, 2px);
-  }
+  } */
   transition: 0.2s;
   &:nth-child(${props => (props.filter === 'all' ? '1' : props.filter === 'active' ? '2' : '3')}) {
     font-weight: 900;
