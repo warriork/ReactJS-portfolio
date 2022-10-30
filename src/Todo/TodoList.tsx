@@ -62,11 +62,11 @@ const Button = styled.button<Filter>`
   background: none;
   border: none;
   cursor: pointer;
-  transition: 0.2s;
+  border-radius: 10px;
+  transition: 0.3s;
   &:nth-child(${props => (props.filter === 'all' ? '1' : props.filter === 'active' ? '2' : '3')}) {
     font-weight: 900;
     color: ${styles.color.layout};
     border: 2px solid ${styles.color.layout};
-    border-radius: 10px;
   }
 `
