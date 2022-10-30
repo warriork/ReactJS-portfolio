@@ -43,14 +43,26 @@ const Navbar_Styled = styled.nav`
 const Link_Router = styled(NavLink)`
   display: block;
   width: 160px;
-  text-decoration: none;
   text-align: center;
   line-height: 40px;
   cursor: pointer;
   font-size: 22px;
   padding: 0 20px;
   background: none;
-  color: ${styles.color.black};
   transition: 0.5s ease-in-out;
-  color: ${props => (props.className === 'active' ? styles.color.layoutActive : 'black')};
+  text-decoration: ${props => (props.className === 'active' ? 'underline' : 'none')};
 `
+// const Button = styled.button`
+//   padding: 2px 5px;
+//   background: none;
+//   border: none;
+//   cursor: pointer;
+//   border-radius: 10px;
+//   transition: 0.3s;
+//   &:nth-child(${props =>
+//         props.className === 'active' ? '1' : props.filter === 'active' ? '2' : '3'}) {
+//     font-weight: 900;
+//     color: ${styles.color.layout};
+//     border: 2px solid ${styles.color.layout};
+//   }
+// `

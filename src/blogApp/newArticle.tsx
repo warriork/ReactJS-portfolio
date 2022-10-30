@@ -48,7 +48,7 @@ export const NewArticle = () => {
         <title>New Article</title>
       </Helmet>
       <Div_Wrapper>
-        <H2_Styled>New Article</H2_Styled>
+        <H2_Styled>Create a new article</H2_Styled>
         <CreateArticle
           onSubmit={e => {
             e.preventDefault()
@@ -69,12 +69,21 @@ export const NewArticle = () => {
           <input type='text' id='title' value={title} onChange={e => setTitle(e.target.value)} />
           <ValidationError_Div>{titleErr}</ValidationError_Div>
           <label htmlFor='content'>Content</label>
-          <input
+          {/* <input
             type='text'
             id='content'
             value={content}
             onChange={e => setContent(e.target.value)}
-          />
+          /> */}
+          <textarea
+            name='content'
+            id='content'
+            cols={30}
+            rows={10}
+            onChange={e => setContent(e.target.value)}
+          >
+            {content}
+          </textarea>
           <ValidationError_Div>{contentErr}</ValidationError_Div>
           <Submit_Btn type='submit'>Create article</Submit_Btn>
         </CreateArticle>
