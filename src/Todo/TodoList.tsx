@@ -62,9 +62,6 @@ const Button = styled.button<Filter>`
   background: none;
   border: none;
   cursor: pointer;
-  /* &:active {
-    transform: translate(0, 2px);
-  } */
   transition: 0.2s;
   &:nth-child(${props => (props.filter === 'all' ? '1' : props.filter === 'active' ? '2' : '3')}) {
     font-weight: 900;
