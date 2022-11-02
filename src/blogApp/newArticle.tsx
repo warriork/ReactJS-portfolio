@@ -1,6 +1,7 @@
 import { BlogContext } from './BlogAppContextProvider'
 import { Helmet } from 'react-helmet'
 import { slugify } from '../utils/slugify'
+import { styles } from '../theme'
 import { urls } from '../urls'
 import { useNavigate } from 'react-router-dom'
 import React, { useContext, useState } from 'react'
@@ -62,20 +63,30 @@ export const NewArticle = () => {
             }
           }}
         >
-          <label htmlFor='autor'>Author</label>
-          <input type='text' id='author' value={author} onChange={e => setAuthor(e.target.value)} />
+          <Label_Styled htmlFor='autor'>Author</Label_Styled>
+          <Input_Styled
+            type='text'
+            id='author'
+            value={author}
+            onChange={e => setAuthor(e.target.value)}
+          />
           <ValidationError_Div>{authorErr}</ValidationError_Div>
-          <label htmlFor='title'>Title</label>
-          <input type='text' id='title' value={title} onChange={e => setTitle(e.target.value)} />
+          <Label_Styled htmlFor='title'>Title</Label_Styled>
+          <Input_Styled
+            type='text'
+            id='title'
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
           <ValidationError_Div>{titleErr}</ValidationError_Div>
-          <label htmlFor='content'>Content</label>
+          <Label_Styled htmlFor='content'>Content</Label_Styled>
           {/* <input
             type='text'
             id='content'
             value={content}
             onChange={e => setContent(e.target.value)}
           /> */}
-          <textarea
+          <Textarea_Styled
             name='content'
             id='content'
             cols={30}
@@ -83,7 +94,7 @@ export const NewArticle = () => {
             onChange={e => setContent(e.target.value)}
           >
             {content}
-          </textarea>
+          </Textarea_Styled>
           <ValidationError_Div>{contentErr}</ValidationError_Div>
           <Submit_Btn type='submit'>Create article</Submit_Btn>
         </CreateArticle>
@@ -107,13 +118,34 @@ const CreateArticle = styled.form`
   flex-direction: column;
 `
 const Submit_Btn = styled.button`
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 10px 20px;
   background: none;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 900;
+  transition: 0.3s;
+  &:hover {
+    background: ${styles.color.layout};
+    color: white;
+    transform: translateY(-3px);
+  }
 `
 const ValidationError_Div = styled.div`
   color: red;
   line-height: 30px;
+`
+const Label_Styled = styled.label`
+  text-align: center;
+  font-size: 20px;
+  line-height: 3rem;
+`
+const Input_Styled = styled.input`
+  height: 30px;
+  padding: 0 5px;
+  font-size: 17px;
+`
+const Textarea_Styled = styled.textarea`
+  font-size: 17px;
+  padding: 5px;
 `

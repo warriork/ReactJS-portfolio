@@ -19,7 +19,7 @@ const useLogicState = () => {
         id: generateID(),
         date: getCurrentDate().toLocaleDateString(),
         title: article.title,
-        author: article.title,
+        author: article.author,
         content: article.content,
       },
       ...articles,

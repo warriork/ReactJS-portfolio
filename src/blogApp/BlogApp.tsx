@@ -41,28 +41,20 @@ const Navbar_Styled = styled.nav`
   flex-direction: row;
 `
 const Link_Router = styled(NavLink)`
+  color: ${styles.color.layout};
+  text-decoration: none;
+  border-bottom: 2px solid ${styles.color.layout};
+  line-height: 2rem;
   display: block;
   width: 160px;
   text-align: center;
   line-height: 40px;
   cursor: pointer;
   font-size: 22px;
-  padding: 0 20px;
+  margin: 0 20px 20px 20px;
   background: none;
   transition: 0.5s ease-in-out;
-  text-decoration: ${props => (props.className === 'active' ? 'underline' : 'none')};
+  &:hover {
+    transform: scale(1.12);
+  }
 `
-// const Button = styled.button`
-//   padding: 2px 5px;
-//   background: none;
-//   border: none;
-//   cursor: pointer;
-//   border-radius: 10px;
-//   transition: 0.3s;
-//   &:nth-child(${props =>
-//         props.className === 'active' ? '1' : props.filter === 'active' ? '2' : '3'}) {
-//     font-weight: 900;
-//     color: ${styles.color.layout};
-//     border: 2px solid ${styles.color.layout};
-//   }
-// `
