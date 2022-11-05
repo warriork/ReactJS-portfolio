@@ -8,4 +8,4 @@ export const Error_404 = () => (
 )
 
 const H2_Styled = styled.h2``
-const P_Styled = styled.h2``
+const P_Styled = styled.p``

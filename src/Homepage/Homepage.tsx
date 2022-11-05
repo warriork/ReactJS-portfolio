@@ -78,96 +78,18 @@ export const Homepage = () => {
           background={portfolio}
         />
       </Projects_Div>
-      <H2_Styled>Education</H2_Styled>
-      <List>
-        <li>
-          <H3_Styled>Master of science</H3_Styled>
-          <Div_flex>
-            <Location_p>
-              <b>2020 - 2022 </b>
-              <i>Pardubice University</i>
-            </Location_p>
-            <h4>Organic chemistry</h4>
-          </Div_flex>
-          <P_about>
-            Diploma project &lsquo;Optimalization of a robotic peptide synthesis&rsquo; is awarded
-            with a prize by <i>Pfizer</i> as{' '}
-            <A_Styled href={urls.pfizerPrize}>the best diploma project</A_Styled>
-          </P_about>
-        </li>
-        <li>
-          <H3_Styled>Bachelor of science</H3_Styled>
-          <Div_flex>
-            <Location_p>
-              <b>2015 - 2019 </b>
-              <i>Politechnic Institute Kyiv, Ukraine</i>
-            </Location_p>
-            <h4>Organic chemistry </h4>
-          </Div_flex>
-        </li>
-      </List>
-      <H2_Styled>Courses</H2_Styled>
-      <List>
-        <li>
-          <b>2022 </b>
-          <i>IT absolvent: </i>
-          <A_Styled href={urls.itAbsolvent} target='_blank'>
-            {urls.itAbsolvent}
-          </A_Styled>
-        </li>
-        <li>
-          <b>2022</b> <i>Rolling scopes school: </i>
-          <A_Styled href={urls.rsSchool} target='_blank' rel='noreferrer'>
-            {urls.rsSchool}
-          </A_Styled>
-        </li>
-        <li>
-          <b>2021</b>
-          <i>Colt Steele Udemy Course</i>
-        </li>
-      </List>
-      <H2_Styled>Languages</H2_Styled>
-      <List>
-        <li>
-          <strong>English: </strong>
-          Advanced
-        </li>
-        <li>
-          <strong>Czech: </strong>Advanced
-        </li>
-        <li>
-          <strong>Russian: </strong>Native speaker
-        </li>
-        <li>
-          <strong>Ukrainian: </strong>Native speaker
-        </li>
-      </List>
-      <H2_Styled>Employment history</H2_Styled>
-      <List>
-        <Div_flex>
-          <b>9/2021-ongoing</b>
-          <li>Organic chemist, peptide synthesis</li>
-        </Div_flex>
-        <>Part time, followed by full time starting 7/2022</>
-        <li>Organic chemist, small molecules synthesis</li>
-        <>10/2017-05/2019</>
-        <>Part time, Kyiv, Ukraine</>
-      </List>
       <H2_Styled>Contact me</H2_Styled>
       <Logos_wrapper>
         <Logo bg={mail} href={urls.myMail} />
         <Logo bg={linkedin} href={urls.myLinkedin} />
         <Logo bg={github} href={urls.myGithub} />
       </Logos_wrapper>
-      <a href='../assets/IhorFesina_frontend.pdf'>123</a>
+      <CV_Link href='../assets/IhorFesina_frontend.pdf'>Look at my PDF CV</CV_Link>
     </Div_Wrapper>
   )
 }
 const Div_Wrapper = styled.div`
-  max-height: 1200px;
-  background-color: ${styles.color.layout};
-  background-color: rgb(75, 191, 191);
-  border: 1px solid black;
+  background-color: rgba(166, 222, 222, 0.51);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -231,22 +153,7 @@ const Skill_Div = styled.div`
   margin-right: 10px;
   border-radius: 15px;
 `
-const Location_p = styled.p`
-  /* position: relative;
-  &::before {
-    display: block;
-    content: '';
-    background: url(${location});
-    background-size: contain;
-    background-position: center;
-   
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: 5px;
-    left: -10px;
-  } */
-`
+const Location_p = styled.p``
 const H3_Styled = styled.h3`
   border-bottom: 2px solid ${styles.color.black};
   margin-bottom: 10px;
@@ -287,4 +194,22 @@ const A_Styled = styled.a`
   cursor: pointer;
   color: ${styles.color.layoutActive};
   font-weight: 600;
+`
+
+const CV_Link = styled.a`
+  display: block;
+  height: 40px;
+  width: 160px;
+  background-color: ${styles.color.layout};
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 15px;
+  transition: 0.2s;
+  margin-bottom: 30px;
+  &:hover {
+    transform: translateY(-5px);
+    background-color: ${styles.color.layoutActive};
+  }
 `

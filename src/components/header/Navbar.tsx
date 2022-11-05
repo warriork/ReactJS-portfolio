@@ -52,7 +52,7 @@ export const Navbar = () => {
 }
 
 const Nav_Styled = styled.nav<Props>`
-  max-width: 1180px;
+  width: 100%;
   height: 40px;
   margin: 0 auto;
   background: ${styles.color.layout};

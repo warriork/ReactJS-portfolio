@@ -7,6 +7,7 @@ export const urls = {
   myMail: 'mailto:fesinaihor@gmail.com',
   myLinkedin: 'https://www.linkedin.com/in/ihor-fesina/',
   itAbsolvent: 'https://www.it-absolvent.cz',
+  webDevCamp: 'https://www.udemy.com/course/the-web-developer-bootcamp/',
   layout: '/',
   homepage: '/',
   pfizerPrize:

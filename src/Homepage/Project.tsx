@@ -35,6 +35,7 @@ const Div_Wrapper = styled.div`
   height: 300px;
   border-radius: 5px;
   transition: 0.5s;
+  background-color: white;
   &:hover {
     transform: scale(1.05);
   }
