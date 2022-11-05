@@ -1,4 +1,3 @@
-import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Link } from 'react-router-dom'
 import { Project } from './Project'
 import { Rainbow_span } from '../components/Rainbow_span'
@@ -16,10 +15,9 @@ import memoryGame from '../assets/projects/memoryGame.png'
 import mortgageCalculator from '../assets/projects/mortgageCalculator.png'
 import portfolio from '../assets/projects/portfolio.png'
 import quotes from '../assets/projects/quotes.png'
+import styled from 'styled-components'
 import ticTacToe from '../assets/projects/ticTacToe.png'
 import todoApp from '../assets/projects/todoApp.png'
-
-import styled from 'styled-components'
 
 export const Homepage = () => {
   return (
@@ -83,32 +81,49 @@ export const Homepage = () => {
       <H2_Styled>Education</H2_Styled>
       <List>
         <li>
-          <h3>Master of science</h3>
-          <Location_p>Pardubice</Location_p>
-          <Date_p>2020 - 2022</Date_p>
-          <h4>Organic chemistry</h4>
-          <p>
+          <H3_Styled>Master of science</H3_Styled>
+          <Div_flex>
+            <Location_p>
+              <b>2020 - 2022 </b>
+              <i>Pardubice University</i>
+            </Location_p>
+            <h4>Organic chemistry</h4>
+          </Div_flex>
+          <P_about>
             Diploma project &lsquo;Optimalization of a robotic peptide synthesis&rsquo; is awarded
-            with a prize by <a>Pfizer</a> as <a href={urls.pfizerPrize}>the best diploma project</a>
-          </p>
+            with a prize by <i>Pfizer</i> as{' '}
+            <A_Styled href={urls.pfizerPrize}>the best diploma project</A_Styled>
+          </P_about>
         </li>
         <li>
-          <h3>Bachelor of science</h3>
-          Kyiv, Ukraine
-          <>2015-2019</>
-          <h4>Organic chemistry and technologies</h4>
+          <H3_Styled>Bachelor of science</H3_Styled>
+          <Div_flex>
+            <Location_p>
+              <b>2015 - 2019 </b>
+              <i>Politechnic Institute Kyiv, Ukraine</i>
+            </Location_p>
+            <h4>Organic chemistry </h4>
+          </Div_flex>
         </li>
       </List>
       <H2_Styled>Courses</H2_Styled>
       <List>
         <li>
-          <b>IT-absolvent </b>2022 <a>https://www.it-absolvent.cz/</a>
+          <b>2022 </b>
+          <i>IT absolvent: </i>
+          <A_Styled href={urls.itAbsolvent} target='_blank'>
+            {urls.itAbsolvent}
+          </A_Styled>
         </li>
         <li>
-          <b>Rolling scopes school</b>2021 <a>https://rs.school/index.html</a>
+          <b>2022</b> <i>Rolling scopes school: </i>
+          <A_Styled href={urls.rsSchool} target='_blank' rel='noreferrer'>
+            {urls.rsSchool}
+          </A_Styled>
         </li>
         <li>
-          <b>Colt Steele Udemy Course</b>
+          <b>2021</b>
+          <i>Colt Steele Udemy Course</i>
         </li>
       </List>
       <H2_Styled>Languages</H2_Styled>
@@ -129,8 +144,10 @@ export const Homepage = () => {
       </List>
       <H2_Styled>Employment history</H2_Styled>
       <List>
-        <li>Organic chemist, peptide synthesis</li>
-        <>9/2021-ongoing</>
+        <Div_flex>
+          <b>9/2021-ongoing</b>
+          <li>Organic chemist, peptide synthesis</li>
+        </Div_flex>
         <>Part time, followed by full time starting 7/2022</>
         <li>Organic chemist, small molecules synthesis</li>
         <>10/2017-05/2019</>
@@ -142,9 +159,20 @@ export const Homepage = () => {
         <Logo bg={linkedin} href={urls.myLinkedin} />
         <Logo bg={github} href={urls.myGithub} />
       </Logos_wrapper>
+      <a href='../assets/IhorFesina_frontend.pdf'>123</a>
     </Div_Wrapper>
   )
 }
+const Div_Wrapper = styled.div`
+  max-height: 1200px;
+  background-color: ${styles.color.layout};
+  background-color: rgb(75, 191, 191);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 const Avatar_Img = styled.img`
   margin-top: 20px;
   height: 200px;
@@ -176,7 +204,7 @@ const AboutMe_P = styled.p`
   border-bottom: 2px solid ${styles.color.layoutActive};
 `
 const Projects_Div = styled.div`
-  max-width: 990px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -185,7 +213,7 @@ const Projects_Div = styled.div`
 `
 const List = styled.ul`
   list-style: none;
-  max-width: 1000px;
+  max-width: 600px;
 `
 
 const Skills_Div = styled.div`
@@ -204,22 +232,31 @@ const Skill_Div = styled.div`
   border-radius: 15px;
 `
 const Location_p = styled.p`
-  position: relative;
+  /* position: relative;
   &::before {
     display: block;
     content: '';
     background: url(${location});
     background-size: contain;
     background-position: center;
-    /* background-repeat: no-repeat; */
+   
     position: absolute;
     width: 10px;
     height: 10px;
     top: 5px;
     left: -10px;
-  }
+  } */
+`
+const H3_Styled = styled.h3`
+  border-bottom: 2px solid ${styles.color.black};
+  margin-bottom: 10px;
 `
 const Date_p = styled.p``
+const Div_flex = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
 const Logos_wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -240,4 +277,14 @@ const Logo = styled.a<SVG>`
   &:hover {
     transform: translateY(-5px);
   }
+`
+const P_about = styled.p`
+  padding: 5px 0;
+  font-size: 14px;
+`
+const A_Styled = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  color: ${styles.color.layoutActive};
+  font-weight: 600;
 `

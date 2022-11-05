@@ -52,14 +52,14 @@ export const Navbar = () => {
 }
 
 const Nav_Styled = styled.nav<Props>`
-  width: 100%;
+  max-width: 1180px;
   height: 40px;
+  margin: 0 auto;
   background: ${styles.color.layout};
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: 2px solid black;
   @media (max-width: ${styles.breakingPoints.s}) {
     height: 100vh;
     flex-direction: column;

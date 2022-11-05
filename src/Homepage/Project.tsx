@@ -34,6 +34,10 @@ const Div_Wrapper = styled.div`
   width: 300px;
   height: 300px;
   border-radius: 5px;
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 type Bg = {
   background: string

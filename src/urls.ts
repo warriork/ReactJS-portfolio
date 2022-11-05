@@ -2,6 +2,7 @@ import { slugify } from './utils/slugify'
 export const urls = {
   bredanEich: 'https://wikipedia.org/wiki/Brendan_Eich',
   myGitLab: 'https://gitlab.com/warriork',
+  rsSchool: 'https://rs.school/',
   myGithub: 'https://github.com/warriork',
   myMail: 'mailto:fesinaihor@gmail.com',
   myLinkedin: 'https://www.linkedin.com/in/ihor-fesina/',
