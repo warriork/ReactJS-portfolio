@@ -41,16 +41,20 @@ const Navbar_Styled = styled.nav`
   flex-direction: row;
 `
 const Link_Router = styled(NavLink)`
+  color: ${styles.color.layout};
+  text-decoration: none;
+  border-bottom: 2px solid ${styles.color.layout};
+  line-height: 2rem;
   display: block;
   width: 160px;
-  text-decoration: none;
   text-align: center;
   line-height: 40px;
   cursor: pointer;
   font-size: 22px;
-  padding: 0 20px;
+  margin: 0 20px 20px 20px;
   background: none;
-  color: ${styles.color.black};
   transition: 0.5s ease-in-out;
-  color: ${props => (props.className === 'active' ? styles.color.layoutActive : 'black')};
+  &:hover {
+    transform: scale(1.12);
+  }
 `

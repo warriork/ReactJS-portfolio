@@ -4,10 +4,10 @@ export const styles = {
   color: {
     black: 'rgb(0, 0, 0)',
     blue: 'rgb(0, 0, 175)',
-    grey: 'rgb(135,200,201)',
+    grey: '	rgba(128,128,128, 0.25)',
     green: 'rgb(50, 205, 50)',
     brown: 'rgb(223, 177, 117)',
-    wheat: 'rgb(96, 87, 70)',
+    wheat: '#f5deb3',
     lightblue: 'rgb(173, 216, 230)',
     darkBrown: '#bb8b6c',
     red: 'rgb(153, 51, 51)',

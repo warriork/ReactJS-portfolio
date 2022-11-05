@@ -19,17 +19,22 @@ const useLogicState = () => {
         id: generateID(),
         date: getCurrentDate().toLocaleDateString(),
         title: article.title,
-        author: article.title,
+        author: article.author,
         content: article.content,
       },
       ...articles,
     ])
+  }
+  const removeArticleData = (DeletedArticleId: string | number) => {
+    const newArticlesList = articles.filter(article => article.id !== DeletedArticleId)
+    setArticles(newArticlesList)
   }
 
   return {
     articles,
     setArticles,
     addArticleData,
+    removeArticleData,
   }
 }
 

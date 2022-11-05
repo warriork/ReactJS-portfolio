@@ -96,12 +96,23 @@ export const MemoryGame = () => {
   )
 }
 
-const Div_Wrapp = styled(Div_Wrapper)`
+const Div_Wrapp = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: 'black';
+  min-height: calc(100vh - 40px);
+  @media (max-width: ${styles.breakingPoints.s}) {
+    min-height: 100vh;
+  }
+  padding-top: 20px;
   background: url(${bg_game});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 `
+
 const H1_Styled = styled.h1<Turns>`
   display: ${props => (props.isGameStarted ? 'none' : 'block')};
   color: ${styles.color.white};
