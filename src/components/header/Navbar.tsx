@@ -45,7 +45,7 @@ export const Navbar = () => {
           href={urls.portfolio}
           target='_blank'
         >
-          Phohtgrapher portfolio
+          Photographer portfolio
         </Link_Router_external>
         <Link_Router_external
           onClick={() => setIsOpen(false)}
