@@ -14,12 +14,6 @@ export const Layout = () => {
       <Div_Wrapper>
         <Outlet />
       </Div_Wrapper>
-      {/* <Footer_Container>
-        <Paragraph_Styled>
-          Made by <Link_Styled href={urls.warriorkGitLab}>Ihor Fesina</Link_Styled>
-          <Link_Styled href={urls.itAbsolvent}>IT absolvent</Link_Styled>
-        </Paragraph_Styled>
-      </Footer_Container> */}
     </div>
   )
 }
