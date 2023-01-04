@@ -10,7 +10,7 @@ export const urls = {
   webDevCamp: 'https://www.udemy.com/course/the-web-developer-bootcamp/',
   layout: '/',
   homepage: '/',
-  cvPDF: 'https://drive.google.com/file/d/13VNV1YswIh7LmldGlSJGRQU9M1oyJnbX/view?usp=sharing',
+  cvPDF: 'https://drive.google.com/file/d/1owi_KYt2VeWMdIJpgJtTZUAh8FbHFnuB/view?usp=sharing',
   pfizerPrize:
     'https://www.pfizer.cz/news/spole%C4%8Dnost-pfizer-op%C4%9Bt-ocenila-nadan%C3%A9-studenty',
   jsHistory: '/js-history',
