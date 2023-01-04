@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { generateID } from '../utils/helperFunctions'
 
 type Article = {
@@ -8,22 +8,30 @@ type Article = {
   title: string
   content: string
 }
-
+type BlogState = {
+  posts: Article[]
+}
+const initialState: BlogState = {
+  posts: [],
+}
 const blogSlice = createSlice({
   name: 'blog',
-  initialState: { posts: [] as Article[] },
+  initialState,
   reducers: {
-    addArticleData(state, action) {
+    addArticleData(
+      state,
+      action: PayloadAction<{ title: string; author: string; content: string }>
+    ) {
       state.posts.push({
         id: generateID(),
         date: new Date().toLocaleDateString(),
-        title: action.payload.article.title,
-        author: action.payload.article.author,
-        content: action.payload.article.content,
+        title: action.payload.title,
+        author: action.payload.author,
+        content: action.payload.content,
       })
     },
-    removeArticleData(state, action) {
-      state.posts = state.posts.filter(article => article.id !== action.payload.id)
+    removeArticleData(state, action: PayloadAction<string>) {
+      state.posts = state.posts.filter(article => article.id !== action.payload)
     },
   },
 })

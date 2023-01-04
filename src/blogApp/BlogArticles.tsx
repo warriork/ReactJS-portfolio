@@ -2,17 +2,26 @@ import { BlogContext } from './BlogAppContextProvider'
 import { Link } from 'react-router-dom'
 import { getArticleUrl } from '../urls'
 import { styles } from '../theme'
+import { useSelector } from 'react-redux'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 
+type Article = {
+  id: string | number
+  date: string
+  author: string
+  title: string
+  content: string
+}
+
 export const BlogArticles = () => {
-  const logic = useContext(BlogContext)
-  if (logic.articles.length === 0) {
+  const articles = useSelector((state: any) => state.blog.posts)
+  if (articles.length === 0) {
     return <h2>Start by creating a new article</h2>
   }
   return (
     <Div_Container>
-      {logic.articles.map(article => (
+      {articles.map((article: Article) => (
         <Link_Styled to={getArticleUrl(article.title)} key={article.id}>
           <Div_ArticleContainer>
             <h2>{article.title}</h2>

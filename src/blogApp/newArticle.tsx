@@ -1,11 +1,20 @@
 import { BlogContext } from './BlogAppContextProvider'
 import { Helmet } from 'react-helmet'
+import { addArticleData } from '../store/blogSlice'
 import { slugify } from '../utils/slugify'
 import { styles } from '../theme'
 import { urls } from '../urls'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+type Article = {
+  id: string | number
+  date: string
+  author: string
+  title: string
+  content: string
+}
 
 export const NewArticle = () => {
   const [title, setTitle] = useState('')
@@ -16,10 +25,10 @@ export const NewArticle = () => {
   const [authorErr, setAuthorErr] = useState('' as '' | 'Please enter an author')
   const [content, setContent] = useState('')
   const [contentErr, setContentErr] = useState('' as '' | 'Start writing an article')
-  // const [isValidInput, setIsValidInput] = useState(false)
-  const logic = useContext(BlogContext)
-  const navigateTo = useNavigate()
 
+  const navigateTo = useNavigate()
+  const dispatch = useDispatch()
+  const articles = useSelector((store: any) => store.blog.posts)
   const validateForm = () => {
     let isValidInput = true
     setContentErr('')
@@ -28,7 +37,7 @@ export const NewArticle = () => {
     if (!title?.trim()) {
       isValidInput = false
       setTitleErr('Please enter a title')
-    } else if (logic.articles.some(article => slugify(article.title) === slugify(title))) {
+    } else if (articles.some((article: Article) => slugify(article.title) === slugify(title))) {
       isValidInput = false
       setTitleErr('Title must be unique')
     }
@@ -55,7 +64,7 @@ export const NewArticle = () => {
             e.preventDefault()
             validateForm()
             if (validateForm()) {
-              logic.addArticleData({ author, title, content })
+              dispatch(addArticleData({ author, title, content }))
               navigateTo(`${urls.blogApp}`)
               setAuthor('')
               setTitle('')
@@ -80,12 +89,6 @@ export const NewArticle = () => {
           />
           <ValidationError_Div>{titleErr}</ValidationError_Div>
           <Label_Styled htmlFor='content'>Content</Label_Styled>
-          {/* <input
-            type='text'
-            id='content'
-            value={content}
-            onChange={e => setContent(e.target.value)}
-          /> */}
           <Textarea_Styled
             name='content'
             id='content'
