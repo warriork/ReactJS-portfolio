@@ -1,11 +1,12 @@
-import { BlogContext } from './BlogAppContextProvider'
 import { DeleteBtn } from '../components/buttons/deleteBtn'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Error_404 } from '../components/Error_404'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import { removeArticleData } from '../store/blogSlice'
 import { slugify } from '../utils/slugify'
 import { styles } from '../theme'
 import { urls } from '../urls'
+import { useAppDispatch, useAppSelector } from '../store/customHooks'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import React, { useContext } from 'react'
@@ -13,9 +14,10 @@ import styled from 'styled-components'
 
 export const ArticleDetail = () => {
   const { slug } = useParams()
-  const logic = useContext(BlogContext)
+  const articles = useAppSelector(state => state.blog.posts)
   const navigateTo = useNavigate()
-  const article = logic.articles.find(article => slugify(article.title) === slug)
+  const dispatch = useAppDispatch()
+  const article = articles.find((article: any) => slugify(article.title) === slug)
 
   return article ? (
     <div>
@@ -23,7 +25,7 @@ export const ArticleDetail = () => {
         <h2>{article.title}</h2>
         <DeleteBtn
           onClick={() => {
-            logic.removeArticleData(article.id)
+            dispatch(removeArticleData(article.id))
             navigateTo(`${urls.blogApp}`)
           }}
         />

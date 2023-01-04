@@ -1,27 +1,25 @@
 import { BlogApp } from './blogApp/BlogApp'
-import { CounterApp } from './CounterApp/CounterApp'
 import { HackerTyper } from './hacker-typer/HackerTyper'
 import { Homepage } from './Homepage/Homepage'
 import { HttpFilterApp } from './httpFilter/HttpFilterApp'
-import { JShistory } from './JShistory/JShistory'
 import { Layout } from './Layout'
 import { Link, Route, Routes } from 'react-router-dom'
 import { MemoryGame } from './MemoryGame/MemoryGame'
 import { MortgageCalculator } from './MortgageCalculator/MortgageCalculator'
+import { Provider } from 'react-redux'
 import { TodoApp } from './Todo/TodoApp'
 import { urls } from './urls'
 import React from 'react'
+import store from './store/store'
 import styled, { createGlobalStyle } from 'styled-components'
 
 export const App = () => {
   return (
-    <>
+    <Provider store={store}>
       <Global />
       <Routes>
         <Route path={urls.layout} element={<Layout />}>
           <Route path={urls.homepage} element={<Homepage />} />
-          <Route path={urls.jsHistory} element={<JShistory />} />
-          <Route path={urls.counterApp} element={<CounterApp />} />
           <Route path={urls.todoApp} element={<TodoApp />} />
           <Route path={urls.mortgageCalculator} element={<MortgageCalculator />} />
           <Route path={urls.hackerTyper} element={<HackerTyper />} />
@@ -30,7 +28,7 @@ export const App = () => {
           <Route path={urls.blogAppWithNestedChildren} element={<BlogApp />} />
         </Route>
       </Routes>
-    </>
+    </Provider>
   )
 }
 
