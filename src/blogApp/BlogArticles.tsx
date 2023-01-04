@@ -1,9 +1,8 @@
-import { BlogContext } from './BlogAppContextProvider'
 import { Link } from 'react-router-dom'
 import { getArticleUrl } from '../urls'
 import { styles } from '../theme'
 import { useSelector } from 'react-redux'
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 type Article = {

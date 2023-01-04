@@ -1,4 +1,3 @@
-import { BlogContext } from './BlogAppContextProvider'
 import { Helmet } from 'react-helmet'
 import { addArticleData } from '../store/blogSlice'
 import { slugify } from '../utils/slugify'
@@ -6,7 +5,7 @@ import { styles } from '../theme'
 import { urls } from '../urls'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 type Article = {
   id: string | number

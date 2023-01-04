@@ -1,6 +1,5 @@
 import { ArticleDetail } from './ArticleDetail'
 import { BlogArticles } from './BlogArticles'
-import { BlogContext, BlogContextProvider } from './BlogAppContextProvider'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Helmet } from 'react-helmet'
 import { Link, NavLink, Route, Routes } from 'react-router-dom'
@@ -13,7 +12,7 @@ import styled from 'styled-components'
 
 export const BlogApp = () => {
   return (
-    <BlogContextProvider>
+    <>
       <Helmet>
         <title>Blog app</title>
       </Helmet>
@@ -29,7 +28,7 @@ export const BlogApp = () => {
           <Route path={articleDetailUrl} element={<ArticleDetail />} />
         </Routes>
       </Div_Wrapper>
-    </BlogContextProvider>
+    </>
   )
 }
 
