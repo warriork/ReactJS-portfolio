@@ -1,20 +1,13 @@
 import { Link } from 'react-router-dom'
 import { getArticleUrl } from '../urls'
 import { styles } from '../theme'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../store/customHooks'
 import React from 'react'
 import styled from 'styled-components'
-
-type Article = {
-  id: string | number
-  date: string
-  author: string
-  title: string
-  content: string
-}
+import type { Article } from '../store/blogSlice'
 
 export const BlogArticles = () => {
-  const articles = useSelector((state: any) => state.blog.posts)
+  const articles = useAppSelector(state => state.blog.posts)
   if (articles.length === 0) {
     return <h2>Start by creating a new article</h2>
   }

@@ -6,7 +6,7 @@ import { removeArticleData } from '../store/blogSlice'
 import { slugify } from '../utils/slugify'
 import { styles } from '../theme'
 import { urls } from '../urls'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../store/customHooks'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import React, { useContext } from 'react'
@@ -14,9 +14,9 @@ import styled from 'styled-components'
 
 export const ArticleDetail = () => {
   const { slug } = useParams()
-  const articles = useSelector((state: any) => state.blog.posts)
+  const articles = useAppSelector(state => state.blog.posts)
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const article = articles.find((article: any) => slugify(article.title) === slug)
 
   return article ? (

@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { generateID } from '../utils/helperFunctions'
 
-type Article = {
+export type Article = {
   id: string | number
   date: string
   author: string
@@ -30,7 +30,7 @@ const blogSlice = createSlice({
         content: action.payload.content,
       })
     },
-    removeArticleData(state, action: PayloadAction<string>) {
+    removeArticleData(state, action: PayloadAction<string | number>) {
       state.posts = state.posts.filter(article => article.id !== action.payload)
     },
   },

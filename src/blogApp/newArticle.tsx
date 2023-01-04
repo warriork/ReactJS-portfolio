@@ -3,17 +3,11 @@ import { addArticleData } from '../store/blogSlice'
 import { slugify } from '../utils/slugify'
 import { styles } from '../theme'
 import { urls } from '../urls'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../store/customHooks'
 import { useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-type Article = {
-  id: string | number
-  date: string
-  author: string
-  title: string
-  content: string
-}
+import type { Article } from '../store/blogSlice'
 
 export const NewArticle = () => {
   const [title, setTitle] = useState('')
@@ -26,8 +20,8 @@ export const NewArticle = () => {
   const [contentErr, setContentErr] = useState('' as '' | 'Start writing an article')
 
   const navigateTo = useNavigate()
-  const dispatch = useDispatch()
-  const articles = useSelector((store: any) => store.blog.posts)
+  const dispatch = useAppDispatch()
+  const articles = useAppSelector(store => store.blog.posts)
   const validateForm = () => {
     let isValidInput = true
     setContentErr('')
