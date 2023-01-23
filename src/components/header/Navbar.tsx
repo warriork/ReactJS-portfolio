@@ -61,9 +61,9 @@ export const Navbar = () => {
 
 const Nav_Styled = styled.nav<Props>`
   width: 100%;
-  height: 40px;
+  height: 60px;
   margin: 0 auto;
-  background: ${styles.color.layout};
+  background: #eae7dc;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -85,10 +85,12 @@ const Nav_Styled = styled.nav<Props>`
   }
 `
 const Link_Router = styled(NavLink)`
+  text-align: center;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${styles.color.white};
+  color: ${styles.color.black};
   text-decoration: none;
   cursor: pointer;
   height: 40px;
@@ -96,15 +98,30 @@ const Link_Router = styled(NavLink)`
   background: none;
   transition: 0.5s ease-in-out;
   background: ${props => (props.className === 'active' ? styles.color.layoutActive : 'none')};
-  &:hover {
-    background: ${styles.color.layoutActive};
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #d8c3a5;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 `
 const Link_Router_external = styled.a`
+  text-align: center;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${styles.color.white};
+  color: ${styles.color.black};
   text-decoration: none;
   cursor: pointer;
   height: 40px;
@@ -112,7 +129,20 @@ const Link_Router_external = styled.a`
   background: none;
   transition: 0.5s ease-in-out;
   background: ${props => (props.className === 'active' ? styles.color.layoutActive : 'none')};
-  &:hover {
-    background: ${styles.color.layoutActive};
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #d8c3a5;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 `
