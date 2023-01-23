@@ -1,6 +1,9 @@
 import { DeleteBtn } from '../components/buttons/deleteBtn'
+import DeleteIcon from '@mui/icons-material/Delete'
+
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Error_404 } from '../components/Error_404'
+import { IconButton, Typography } from '@mui/material'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { removeArticleData } from '../store/blogSlice'
 import { slugify } from '../utils/slugify'
@@ -23,17 +26,19 @@ export const ArticleDetail = () => {
     <div>
       <Flex_wrapper>
         <h2>{article.title}</h2>
-        <DeleteBtn
+        <IconButton
           onClick={() => {
             dispatch(removeArticleData(article.id))
             navigateTo(`${urls.blogApp}`)
           }}
-        />
+        >
+          <DeleteIcon />
+        </IconButton>
       </Flex_wrapper>
       <ReactMarkdown>{article.content}</ReactMarkdown>
-      <p>
-        by <Autor_Span>{article.author}</Autor_Span>, <Date_Span>{article.date}</Date_Span>
-      </p>
+      <Typography variant='body2' sx={{ marginTop: '5px' }}>
+        by <b>{article.author}</b>, created: <b>{article.date}</b>
+      </Typography>
     </div>
   ) : (
     <Error_404 />
@@ -45,6 +50,3 @@ const Flex_wrapper = styled.div`
   justify-content: space-between;
   align-items: bottom;
 `
-
-const Autor_Span = styled.span``
-const Date_Span = styled.span``

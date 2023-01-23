@@ -1,9 +1,11 @@
 import { ArticleDetail } from './ArticleDetail'
 import { BlogArticles } from './BlogArticles'
+import { Button } from '@mui/material'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Helmet } from 'react-helmet'
 import { Link, NavLink, Route, Routes } from 'react-router-dom'
 import { NewArticle } from './newArticle'
+import { Typography } from '@mui/material'
 import { articleDetailUrl, newArticleUrl, urls } from '../urls'
 import { styles } from '../theme'
 import React, { useState } from 'react'
@@ -17,10 +19,20 @@ export const BlogApp = () => {
         <title>Blog app</title>
       </Helmet>
       <Div_Wrapper>
-        <H1_Styled>Blog</H1_Styled>
+        <Typography component='h1' variant='h4' sx={{ lineHeight: '4rem' }}>
+          Blog
+        </Typography>
         <Navbar_Styled>
-          <Link_Router to={urls.blogApp}>Articles</Link_Router>
-          <Link_Router to={newArticleUrl}>New Article</Link_Router>
+          <Link_Router to={urls.blogApp}>
+            <Button variant='contained' sx={{ width: '200px', marginBottom: '10px' }}>
+              Articles
+            </Button>
+          </Link_Router>
+          <Link_Router to={newArticleUrl}>
+            <Button variant='outlined' sx={{ width: '200px', marginBottom: '10px' }}>
+              New Article
+            </Button>
+          </Link_Router>
         </Navbar_Styled>
         <Routes>
           <Route path={'/'} element={<BlogArticles />} />
@@ -38,22 +50,14 @@ const H1_Styled = styled.h1`
 const Navbar_Styled = styled.nav`
   display: flex;
   flex-direction: row;
+  width: 500px;
+  justify-content: space-between;
+  @media screen and (max-width: 700px) {
+    width: 100vw;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 `
 const Link_Router = styled(NavLink)`
-  color: ${styles.color.layout};
   text-decoration: none;
-  border-bottom: 2px solid ${styles.color.layout};
-  line-height: 2rem;
-  display: block;
-  width: 160px;
-  text-align: center;
-  line-height: 40px;
-  cursor: pointer;
-  font-size: 22px;
-  margin: 0 20px 20px 20px;
-  background: none;
-  transition: 0.5s ease-in-out;
-  &:hover {
-    transform: scale(1.12);
-  }
 `

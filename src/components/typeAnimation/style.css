@@ -1,0 +1,17 @@
+.h1 {
+    margin: 15px auto;
+  font-size: 3em;
+  color: black;
+  line-height: 4rem;
+  max-width: 660px;
+  text-align: center;
+}
+
+@media screen and (max-width:660px) {
+   .h1 {
+    font-size: 1.5rem;
+    max-width: 400px;
+    line-height: 2rem;
+    }
+
+}

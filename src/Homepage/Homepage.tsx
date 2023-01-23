@@ -1,8 +1,11 @@
+import { AnimatedTyping } from '../components/typeAnimation/TypeAnimation'
+import { Button, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { Project } from './Project'
 import { Rainbow_span } from '../components/Rainbow_span'
 import { styles } from '../theme'
 import { urls } from '../urls'
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload'
 import React from 'react'
 import avatar from '../assets/avatar.jpg'
 import blogApp from '../assets/projects/blogApp.png'
@@ -15,41 +18,42 @@ import memoryGame from '../assets/projects/memoryGame.png'
 import mortgageCalculator from '../assets/projects/mortgageCalculator.png'
 import portfolio from '../assets/projects/portfolio.png'
 import quotes from '../assets/projects/quotes.png'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import ticTacToe from '../assets/projects/ticTacToe.png'
 import todoApp from '../assets/projects/todoApp.png'
 
 export const Homepage = () => {
   return (
     <Div_Wrapper>
-      <Avatar_Img src={avatar}></Avatar_Img>
-      <H1_Styled>
-        Hi, I am <Rainbow_span>Ihor Fesina</Rainbow_span>
-      </H1_Styled>
-      <Occupation_P>frontend developer</Occupation_P>
-      <AboutMe_P>
-        Passionate to learn and discover. Open to new challenges and have a strong desire to be the
-        best in what I am doing.
-      </AboutMe_P>
-
-      <H2_Styled>Skills</H2_Styled>
+      <Avatar_Img src={avatar} />
+      <AnimatedTyping>Hello World! I am Ihor Fesina. Frontend developer 💻 </AnimatedTyping>
+      <About_me>
+        <Typography variant='h5' component='h2' textAlign='center'>
+          Passionate to learn and discover. Open to new challenges and have a strong desire to be
+          the best in what I am doing.
+        </Typography>
+      </About_me>
+      <Typography variant='h4' component='h3' sx={{ padding: '20px' }}>
+        Skills
+      </Typography>
 
       <Skills_Div>
         <Skill_Div>HTML</Skill_Div>
         <Skill_Div>CSS</Skill_Div>
         <Skill_Div>SCSS</Skill_Div>
-        <Skill_Div>react styled components</Skill_Div>
-
+        <Skill_Div>React styled components</Skill_Div>
         <Skill_Div>JS</Skill_Div>
         <Skill_Div>React JS</Skill_Div>
+        <Skill_Div>Redux</Skill_Div>
         <Skill_Div>Typescript</Skill_Div>
-
         <Skill_Div>GIT</Skill_Div>
         <Skill_Div>Github</Skill_Div>
         <Skill_Div>Gitlab</Skill_Div>
         <Skill_Div>JIRA</Skill_Div>
       </Skills_Div>
-      <H2_Styled>Projects</H2_Styled>
+      <Typography variant='h4' component='h3' sx={{ padding: '20px' }}>
+        Projects
+      </Typography>
       <Projects_Div>
         <Project
           name='Pexeso'
@@ -136,17 +140,37 @@ export const Homepage = () => {
         <Logo bg={linkedin} href={urls.myLinkedin} target='_blank' />
         <Logo bg={github} href={urls.myGithub} target='_blank' />
       </Logos_wrapper>
-      <CV_Link href={urls.cvPDF} target='_blank'>
-        Look at my CV in PDF
-      </CV_Link>
+      <Button
+        href={urls.cvPDF}
+        target='_blank'
+        color='primary'
+        variant='contained'
+        startIcon={<CloudDownloadIcon />}
+      >
+        Download CV
+      </Button>
     </Div_Wrapper>
   )
 }
+const appear = keyframes`
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`
+
 const Div_Wrapper = styled.div`
-  background-color: rgba(166, 222, 222, 0.51);
+  background-color: #eae7dc;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 30px;
+  animation: ${appear} 0.5s linear;
 `
 
 const Avatar_Img = styled.img`
@@ -154,15 +178,9 @@ const Avatar_Img = styled.img`
   height: 200px;
   width: 200px;
   border-radius: 50%;
+  animation: ${appear} 2s linear;
 `
-const Occupation_P = styled.p`
-  line-height: 2rem;
-  font-weight: 900;
-  font-size: 22px;
-`
-const H1_Styled = styled.h1`
-  line-height: 3rem;
-`
+
 const H2_Styled = styled.h2`
   line-height: 3rem;
 `
@@ -241,31 +259,20 @@ const Logo = styled.a<SVG>`
     transform: translateY(-5px);
   }
 `
-const P_about = styled.p`
-  padding: 5px 0;
-  font-size: 14px;
-`
+
 const A_Styled = styled.a`
   text-decoration: none;
   cursor: pointer;
   color: ${styles.color.layoutActive};
   font-weight: 600;
 `
-
-const CV_Link = styled.a`
-  display: block;
-  height: 40px;
-  width: 180px;
-  background-color: ${styles.color.layout};
-  text-decoration: none;
-  color: white;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 15px;
-  transition: 0.2s;
-  margin-bottom: 30px;
-  &:hover {
-    transform: translateY(-5px);
-    background-color: ${styles.color.layoutActive};
+const About_me = styled.div`
+  max-width: 660px;
+  padding: 15px 30px;
+  background: white;
+  border-radius: 50px;
+  @media screen and (max-width: 700px) {
+    width: 100vw;
+    border-radius: 0;
   }
 `

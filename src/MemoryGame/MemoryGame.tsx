@@ -8,7 +8,7 @@ import { generateID, getShuffledArray } from '../utils/helperFunctions'
 import { styles } from '../theme'
 import { timeout } from '../utils/helperFunctions'
 import React, { useState } from 'react'
-import bg_game from '../assets/bg_game.jpg'
+import bg_game from '../assets/bg_game.webp'
 import cardCover from '../assets/cards/cover.png'
 import styled from 'styled-components'
 

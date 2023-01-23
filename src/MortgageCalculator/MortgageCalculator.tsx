@@ -1,10 +1,12 @@
 import { Button } from '../components/Button'
 import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Helmet } from 'react-helmet'
+import { Input, InputAdornment, InputLabel, Slider, TextField, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { calcMortgage } from './calcMortgageFunc'
 import { styles } from '../theme'
 import React, { useState } from 'react'
+import bg from '../assets/mortgage_bg.webp'
 import styled from 'styled-components'
 
 export const MortgageCalculator = () => {
@@ -18,103 +20,134 @@ export const MortgageCalculator = () => {
       <Helmet>
         <title>Motrage Calculator</title>
       </Helmet>
-      <h1>Mortage calculator</h1>
+      <Typography variant='h3' component='h1' sx={{ marginBottom: '20px' }}>
+        Mortage calculator
+      </Typography>
       <form>
         <div>
-          <Label_Styled htmlFor='price'>Enter a loan amount</Label_Styled>
-          <Input_Number
-            min={1_000_000}
-            max={100_000_000}
-            step={50_000}
+          <TextField
+            sx={{ m: 1, width: '25ch' }}
+            label='Loan amount'
             type='number'
+            size='small'
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>kč</InputAdornment>,
+              inputProps: {
+                min: 1000000,
+                max: 100000000,
+                step: 50000,
+              },
+            }}
             name='price'
             id='price'
             value={price}
             onChange={e => setPrice(Number(e.target.value))}
           />
-          <Input_Range
+          <Slider
+            size='small'
             min={1_000_000}
             max={100_000_000}
             step={50_000}
-            type='range'
             name='price'
             value={price}
-            onChange={e => setPrice(Number(e.target.value))}
+            defaultValue={1_000_000}
+            onChange={e => setPrice(Number((e.target as HTMLInputElement).value))}
           />
         </div>
         <div>
-          <Label_Styled htmlFor='first-payment'>Enter a first payment amount</Label_Styled>
-          <Input_Number
-            min={0}
-            max={100_000_000}
-            step={50_000}
+          <TextField
+            sx={{ m: 1, width: '25ch' }}
+            label='First payment'
             type='number'
+            size='small'
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>kč</InputAdornment>,
+              inputProps: {
+                min: 0,
+                max: price,
+                step: 50000,
+              },
+            }}
             name='firstPayment'
             id='price'
             value={firstPayment < price ? firstPayment : price}
             onChange={e => setFirstPayment(Number(e.target.value))}
           />
-          <Input_Range
+          <Slider
+            size='small'
             min={0}
             max={price}
             step={50_000}
-            type='range'
             name='firstPayment'
             value={firstPayment < price ? firstPayment : price}
-            onChange={e => setFirstPayment(Number(e.target.value))}
+            onChange={e => setFirstPayment(Number((e.target as HTMLInputElement).value))}
           />
         </div>
         <div>
-          <Label_Styled htmlFor='period'>Select a loan term </Label_Styled>
-          <Input_Number
-            min={5}
-            max={40}
-            step={1}
+          <TextField
+            sx={{ m: 1, width: '25ch' }}
+            label='Loan term'
             type='number'
+            size='small'
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>years</InputAdornment>,
+              inputProps: {
+                min: 5,
+                max: 40,
+                step: 1,
+              },
+            }}
             name='period'
             id='period'
             value={period}
             onChange={e => setPeriod(Number(e.target.value))}
           />
-          <Input_Range
+          <Slider
+            size='small'
             min={5}
             max={40}
             step={1}
-            type='range'
             name='period'
             value={period}
-            onChange={e => setPeriod(Number(e.target.value))}
+            onChange={e => setPeriod(Number((e.target as HTMLInputElement).value))}
           />
         </div>
         <div>
-          <Label_Styled htmlFor='percentage'>Select a percentage rate</Label_Styled>
-          <Input_Number
-            min={1}
-            max={20}
-            step={0.1}
+          <TextField
+            sx={{ m: 1, width: '25ch' }}
+            label='Percentage rate'
             type='number'
+            size='small'
+            InputProps={{
+              endAdornment: <InputAdornment position='end'>%</InputAdornment>,
+              inputProps: {
+                min: 2,
+                max: 20,
+                step: 0.1,
+              },
+            }}
             name='percentage'
             id='percentage'
             value={rate}
             onChange={e => setRate(Number(e.target.value))}
           />
-          <Input_Range
+          <Slider
+            size='small'
             min={1}
             max={20}
             step={0.1}
-            type='range'
             name='percentage'
             value={rate}
-            onChange={e => setRate(Number(e.target.value))}
+            onChange={e => setRate(Number((e.target as HTMLInputElement).value))}
           />
         </div>
       </form>
       <div>
-        <H2_Styled>
+        <Typography variant='h5'>
           Your monthly payment is{' '}
-          <span>{Math.round(calcMortgage({ rate, period, price, firstPayment }))}</span> kč for{' '}
-          <span>{period}</span> years
-        </H2_Styled>
+          <b>{Math.round(calcMortgage({ rate, period, price, firstPayment }))}</b> kč for{' '}
+          <b>{period}</b> years
+        </Typography>
       </div>
     </Div_Container>
   )
@@ -122,34 +155,10 @@ export const MortgageCalculator = () => {
 
 const Div_Container = styled(Div_Wrapper)`
   justify-content: flex-start;
+  background-color: white;
   padding: 20px;
-`
-const Label_Styled = styled.label`
-  display: block;
-  line-height: 2rem;
-  text-align: center;
-`
-const Input_Number = styled.input.attrs({ type: 'number' })`
-  display: block;
-  width: 100%;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  border-radius: 5px;
-  padding: 0 10px;
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-`
-const Input_Range = styled.input.attrs({ type: 'range' })`
-  display: block;
-  width: 100%;
-  padding: 10px 0;
-`
-const H2_Styled = styled.h2`
-  text-align: center;
-  &:span {
-    color: ${styles.color.red};
-  }
+  background: url(${bg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right;
 `
