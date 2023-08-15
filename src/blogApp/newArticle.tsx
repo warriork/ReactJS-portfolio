@@ -2,7 +2,6 @@ import { Button, FormControl, FormHelperText, TextField, Typography } from '@mui
 import { Helmet } from 'react-helmet'
 import { addArticleData } from '../store/blogSlice'
 import { slugify } from '../utils/slugify'
-import { styles } from '../theme'
 import { urls } from '../urls'
 import { useAppDispatch, useAppSelector } from '../store/customHooks'
 import { useNavigate } from 'react-router-dom'

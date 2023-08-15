@@ -3,15 +3,14 @@ import { HackerTyper } from './hacker-typer/HackerTyper'
 import { Homepage } from './Homepage/Homepage'
 import { HttpFilterApp } from './httpFilter/HttpFilterApp'
 import { Layout } from './Layout'
-import { Link, Route, Routes } from 'react-router-dom'
 import { MemoryGame } from './MemoryGame/MemoryGame'
 import { MortgageCalculator } from './MortgageCalculator/MortgageCalculator'
 import { Provider } from 'react-redux'
+import { Route, Routes } from 'react-router-dom'
 import { TodoApp } from './Todo/TodoApp'
+import { createGlobalStyle } from 'styled-components'
 import { urls } from './urls'
-import React from 'react'
 import store from './store/store'
-import styled, { createGlobalStyle } from 'styled-components'
 
 export const App = () => {
   return (

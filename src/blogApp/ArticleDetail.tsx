@@ -1,7 +1,4 @@
 import { DeleteBtn } from '../components/buttons/deleteBtn'
-import DeleteIcon from '@mui/icons-material/Delete'
-
-import { Div_Wrapper } from '../components/Div_Wrapper'
 import { Error_404 } from '../components/Error_404'
 import { IconButton, Typography } from '@mui/material'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
@@ -12,6 +9,7 @@ import { urls } from '../urls'
 import { useAppDispatch, useAppSelector } from '../store/customHooks'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import DeleteIcon from '@mui/icons-material/Delete'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 

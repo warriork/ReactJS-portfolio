@@ -3,13 +3,12 @@ import { TextField, Typography } from '@mui/material'
 import { getArticleUrl } from '../urls'
 import { styles } from '../theme'
 import { useAppSelector } from '../store/customHooks'
-import React from 'react'
 import styled from 'styled-components'
 import type { Article } from '../store/blogSlice'
 
 export const BlogArticles = () => {
   const articles = useAppSelector(state => state.blog.posts)
-  if (articles.length === 0) {
+  if (!articles.length) {
     return (
       <>
         <Typography variant='h5'>There are no articles yet</Typography>
@@ -20,18 +19,18 @@ export const BlogArticles = () => {
     )
   }
   return (
-    <Div_Container>
+    <div>
       {articles.map((article: Article) => (
         <Link_Styled to={getArticleUrl(article.title)} key={article.id}>
-          <Div_ArticleContainer>
+          <div>
             <Typography variant='h5'>{article.title}</Typography>
             <Typography variant='body2'>
               by {article.author} {article.date}
             </Typography>
-          </Div_ArticleContainer>
+          </div>
         </Link_Styled>
       ))}
-    </Div_Container>
+    </div>
   )
 }
 const Link_Styled = styled(Link)`
@@ -43,5 +42,3 @@ const Link_Styled = styled(Link)`
     transform: translateY(-2px);
   }
 `
-const Div_ArticleContainer = styled.div``
-const Div_Container = styled.div``

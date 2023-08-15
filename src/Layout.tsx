@@ -1,10 +1,7 @@
-import { Burger } from './components/header/Burger'
 import { Link, Outlet } from 'react-router-dom'
 import { Link_Styled } from './components/Link_Styled'
 import { Navbar } from './components/header/Navbar'
 import { styles } from './theme'
-import { urls } from './urls'
-import React from 'react'
 import styled from 'styled-components'
 
 export const Layout = () => {
