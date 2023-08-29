@@ -10,8 +10,7 @@ export const urls = {
   webDevCamp: 'https://www.udemy.com/course/the-web-developer-bootcamp/',
   layout: '/',
   homepage: '/',
-  cvPDF:
-    'https://drive.https://drive.google.com/file/d/1yNHkpBgiVm4DsKcNcW7CTGtCLUEO7wUA/view?usp=sharing.com/file/d/1owi_KYt2VeWMdIJpgJtTZUAh8FbHFnuB/view?usp=sharing',
+  cvPDF: 'https://drive.google.com/file/d/1yNHkpBgiVm4DsKcNcW7CTGtCLUEO7wUA/view?usp=sharing',
   pfizerPrize: 'https://feedit.cz/2022/07/01/spolecnost-pfizer-ocenila-mlade-vedce/',
   jsHistory: '/js-history',
   counterApp: '/counter-app',
