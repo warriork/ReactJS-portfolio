@@ -1,4 +1,3 @@
-import { DeleteBtn } from '../components/buttons/deleteBtn'
 import { Error_404 } from '../components/Error_404'
 import { IconButton, Typography } from '@mui/material'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
